@@ -13,10 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>model</module>
-		<module>cbb</module>
-		<module>service</module>
-        <!--<module>deployment</module>-->
+        <module>service</module>
+        <module>deployment</module>
     </modules>
 
 </project>

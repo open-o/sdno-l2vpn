@@ -30,32 +30,32 @@ import javax.ws.rs.core.MediaType;
 
 import org.openo.baseservice.remoteservice.exception.ServiceException;
 import org.openo.baseservice.util.RestUtils;
-import org.openo.sdno.cbb.wanvpn.inventory.sdk.common.OwnerInfoThreadLocal;
-import org.openo.sdno.cbb.wanvpn.inventory.sdk.common.ServiceTypeEnum;
-import org.openo.sdno.cbb.wanvpn.util.checker.ScopeChecker;
-import org.openo.sdno.cbb.wanvpn.util.error.ServiceExceptionUtil;
-import org.openo.sdno.cbb.wanvpn.util.error.code.CommonErrorCode;
-import org.openo.sdno.cbb.wanvpn.util.executor.ExecutorUtils;
-import org.openo.sdno.cbb.wanvpn.util.executor.resource.svc.SvcResourceCreateExecutor;
-import org.openo.sdno.cbb.wanvpn.util.executor.resource.svc.SvcResourceDeleteUUIDExecutor;
-import org.openo.sdno.cbb.wanvpn.util.executor.resource.svc.SvcResourceQuerySingleExecutor;
-import org.openo.sdno.cbb.wanvpn.util.executor.resource.svc.SvcResourceUpdateExecutor;
 import org.openo.sdno.framework.container.service.IResource;
 import org.openo.sdno.framework.container.util.JsonUtil;
 import org.openo.sdno.l2vpnservice.service.inf.L2VpnService;
 import org.openo.sdno.model.servicemodel.SvcModel;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
 import org.openo.sdno.model.servicemodel.vpn.VpnVo;
+import org.openo.sdno.wanvpn.inventory.sdk.common.OwnerInfoThreadLocal;
+import org.openo.sdno.wanvpn.inventory.sdk.common.ServiceTypeEnum;
+import org.openo.sdno.wanvpn.util.checker.ScopeChecker;
+import org.openo.sdno.wanvpn.util.error.CommonErrorCode;
+import org.openo.sdno.wanvpn.util.error.ServiceExceptionUtil;
+import org.openo.sdno.wanvpn.util.executor.ExecutorUtils;
+import org.openo.sdno.wanvpn.util.executor.resource.svc.SvcResourceCreateExecutor;
+import org.openo.sdno.wanvpn.util.executor.resource.svc.SvcResourceDeleteUUIDExecutor;
+import org.openo.sdno.wanvpn.util.executor.resource.svc.SvcResourceQuerySingleExecutor;
+import org.openo.sdno.wanvpn.util.executor.resource.svc.SvcResourceUpdateExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * l2vpn service resource class.<br/>
- * 
+ *
  * @author
  * @version SDNO 0.5 Aug 9, 2016
  */
-@Path("/svc/l2vpn/v1/l2vpns")
+@Path("/sdnol2vpn/v1/l2vpns")
 public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     private static final int MAXLENGTH = 200;
@@ -64,12 +64,12 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     @Override
     public String getResUri() {
-        return "/svc/l2vpn/v1/l2vpns";
+        return "/sdnol2vpn/v1/l2vpns";
     }
 
     /**
      * create l2vpn.<br/>
-     * 
+     *
      * @param request http request context.
      * @return vpn created.
      * @throws ServiceException if data base operation failed.
@@ -106,7 +106,7 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     /**
      * delete vpn.<br/>
-     * 
+     *
      * @param uuid uuid of the vpn.
      * @param request http request context.
      * @return vpn created.
@@ -150,7 +150,7 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     /**
      * get detail of one vpn.<br/>
-     * 
+     *
      * @param uuid uuid of the vpn.
      * @param request http request context.
      * @return vpn created.
@@ -175,7 +175,7 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     /**
      * get status of one vpn.<br/>
-     * 
+     *
      * @param uuid uuid of the vpn.
      * @param request http request context.
      * @return vpn created.
@@ -201,7 +201,7 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
 
     /**
      * update one vpn.<br/>
-     * 
+     *
      * @param uuid uuid of the vpn.
      * @param request http request context.
      * @return vpn created.

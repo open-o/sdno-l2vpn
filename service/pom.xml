@@ -16,7 +16,22 @@
     <dependencies>
         <dependency>
             <groupId>org.openo.sdno</groupId>
-            <artifactId>org.openo.sdno.cbb.l2vpn</artifactId>
+            <artifactId>org.openo.sdno.wanvpn.model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openo.sdno</groupId>
+            <artifactId>org.openo.sdno.wanvpn.inventory</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openo.sdno</groupId>
+            <artifactId>org.openo.sdno.wanvpn.dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openo.sdno</groupId>
+            <artifactId>org.openo.sdno.wanvpn.translator</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -105,11 +120,7 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.openo.sdno</groupId>
-            <artifactId>org.openo.sdno.model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>org.openo.sdno</groupId>
             <artifactId>org.openo.sdno.common-cbb</artifactId>

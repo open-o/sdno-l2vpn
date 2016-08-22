@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:ctx="http://www.springframework.org/schema/context" xmlns:context="http://www.springframework.org/schema/context"
+
+    xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://cxf.apache.org/jaxrs 
+    http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="org.openo.sdno.cbb.wanvpn.dao" />
+    <context:component-scan base-package="org.openo.sdno.l2vpnservice.dao" />
+    <context:component-scan base-package="org.openo.sdno.l2vpnservice.service" />
+
+    <!-- these are included in the dependency jar -->
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+    <!-- jar rest server registration -->
+    <jaxrs:server id="l2vpnServer" address="/">
+        <!-- registering beans -->
+        <jaxrs:serviceBeans>
+            <ref bean="l2VpnServiceResource"></ref>
+        </jaxrs:serviceBeans>
+        <!-- registering providers -->
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <bean id="l2VpnServiceResource" class="org.openo.sdno.l2vpnservice.resource.L2VpnServiceResource">
+        <property name="service" ref="l2vpnService" />
+    </bean>
+
+    <bean id="l2vpnService" class="org.openo.sdno.l2vpnservice.service.impl.L2vpnServiceImpl">
+        <property name="l2VpnCreateService" ref="l2vpnCreateService" />
+        <property name="l2VpnDeleteService" ref="l2vpnDeleteService" />
+        <property name="l2VpnModifyService" ref="l2vpnModifyService" />
+        <property name="l2VpnQueryService" ref="l2vpnQueryService" />
+    </bean>
+
+    <bean id="l2vpnCreateService" class="org.openo.sdno.l2vpnservice.service.impl.L2VpnCreateServiceImpl">
+        <property name="l2VpnDao" ref="l2VpnDao" />
+        <property name="l2VpnTpDao" ref="l2VpnTpDao" />
+        <property name="translatorProvider" ref="translatorProvider" />
+        <property name="sbiApiServiceProvider" ref="sbiApiServiceProvider" />
+        <property name="l2VpnQueryService" ref="l2vpnQueryService" />
+        <property name="translatorCtxFactory" ref="translatorCtxFactory" />
+    </bean>
+
+    <bean id="l2vpnDeleteService" class="org.openo.sdno.l2vpnservice.service.impl.L2VpnDeleteServiceImpl">
+        <property name="l2VpnDao" ref="l2VpnDao" />
+        <property name="l2VpnQueryService" ref="l2vpnQueryService" />
+        <property name="sbiApiServiceProvider" ref="sbiApiServiceProvider" />
+    </bean>
+
+    <bean id="l2vpnModifyService" class="org.openo.sdno.l2vpnservice.service.impl.L2VpnModifyServiceImpl">
+        <property name="vpnDao" ref="l2VpnDao" />
+        <property name="sbiApiServiceProvider" ref="sbiApiServiceProvider" />
+    </bean>
+
+    <bean id="l2vpnQueryService" class="org.openo.sdno.l2vpnservice.service.impl.L2VpnQueryServiceImpl">
+        <property name="vpnDao" ref="l2VpnDao" />
+        <property name="l2VpnTpDao" ref="l2VpnTpDao" />
+        <property name="sbiApiServiceProvider" ref="sbiApiServiceProvider" />
+    </bean>
+
+    <bean id="l2VpnDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnDao"></bean>
+
+    <bean id="l2VpnTpDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnTpDao"></bean>
+
+    <bean id="sbiApiServiceProvider" class="org.openo.sdno.l2vpnservice.service.provider.SbiApiServiceProvider">
+        <property name="sbiApiService" ref="sbiApiService" />
+    </bean>
+
+    <bean id="sbiApiService" class="org.openo.sdno.l2vpnservice.service.api.VPWSVpnSbiApi"></bean>
+
+    <bean id="responsTranslator" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl"></bean>
+
+    <bean id="l2VpnTpTypeSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnTpTypeSpecDao">
+        <property name="ethernetTpSpecDao" ref="l2VpnEthernetTpSpecDao" />
+        <property name="ipTpSpecDao" ref="l2VpnIpTpSpecDao" />
+    </bean>
+    
+    <bean id="l2VpnEthernetTpSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnEthernetTpSpecDao"></bean>
+
+    <bean id="l2VpnIpTpSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnIpTpSpecDao"></bean>
+
+    <bean id="l2VpnCeTpDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnCeTpDao"></bean>
+    
+    <bean id="invDao" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.PuerInvDAOImpl">
+       <property name="puerObjInvService" ref="puerInvServiceNbiBean" />
+       <property name="puerComplexService" ref="puerInvComplexNbiBean" />
+    </bean>
+    <bean id="puerInvServiceNbiBean" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.nbi.PuerInvServiceNbiBean">
+    </bean>
+    <bean id="puerInvComplexNbiBean" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.nbi.PuerInvComplexNbiBean">
+    </bean>
+    
+    <bean id="translatorProvider" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.L2TranslatorProviderImpl">
+        <property name="l2VpnTranslator" ref="uniformL2VpnTranslatorImpl" />
+        <property name="l2AcTranslator" ref="uniformL2AcTranslatorImpl" />
+        <property name="responsTranslator" ref="uniformResponsTranslatorImpl" />
+    </bean>
+    
+    <bean id="uniformL2VpnTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.L2VpnTranslatorImpl">
+    </bean>
+    
+    <bean id="uniformL2AcTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.L2AcTranslatorImpl">
+    </bean>
+    
+    <bean id="uniformResponsTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl">
+    </bean>
+    
+    <bean id="translatorCtxFactory" class="org.openo.sdno.cbb.wanvpn.translator.impl.TranslatorCtxFactoryImpl">
+    </bean>
+    
+</beans>
+
+
+
+
+
