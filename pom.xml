@@ -6,7 +6,7 @@
         <artifactId>common-setting</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>org.openo.sdno</groupId>
+    <groupId>org.openo.sdno.l2vpn</groupId>
     <artifactId>l2vpnservice-root</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>L2vpnServiceRoot</name>
