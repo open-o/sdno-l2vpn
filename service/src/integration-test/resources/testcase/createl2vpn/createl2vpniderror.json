@@ -1,0 +1,198 @@
+{
+	"request": {
+		"uri": "/openoapi/sdnol2vpn/v1/l2vpns",
+		"method": "post",
+		"headers": {
+			"Content-Type": "application/json;charset=UTF-8"
+		},
+		"json": {
+			"protectionSchema": {
+				"uuid": "7d58ddfa-2e77-4eb1-acc6-1493be75e29a",
+				"protectType": "1:1",
+				"layerRate": null,
+				"reversionMode": "RM_NON_REVERTIVE",
+				"wtr": 0
+			},
+			"pwSchema": null,
+			"qosPolicies":{},
+			"tunnelSchema": {
+				"uuid": "905f0215-2ce5-4391-b62c-702e1fb71a3d",
+				"tunnelTech": "REVP-TE",
+				"tunnelSelectMode": "AutoCreate",
+				"pwTech": null,
+				"tunnelLatency": "12",
+				"tunnelCreatePolicy": {
+					"bestEffort": "true",
+					"shareMode": "N:1",
+					"coRoute": "false",
+					"bfdEnable": "true",
+					"pathConstraint": null,
+					"tunnelProtectpolicy": {
+						"uuid": "7d58ddfa-2e77-4eb1-acc6-1493be75e29a",
+						"protectType": "1:1",
+						"layerRate": null,
+						"reversionMode": "RM_REVERTIVE",
+						"wtr": 1
+					}
+				}
+			},
+			"mtu":null,
+			"vpn": {
+				"id": "0de4547b-50b1-4dcd-80a5-a65bd3c4a834",
+				"name": "l2vpn-te-45-12",
+				"description": "g234g",
+				"vpnBasicInfo": {
+					"uuid": "fda495ce-d4d1-4d93-b6d2-ef129d595e17",
+					"topology": "point_to_point",
+					"serviceType": "l2vpn",
+					"technology": "mpls",
+					"adminStatus": "inactive",
+					"addtionalInfo": null
+				},
+				"operStatus": null,
+				"syncStatus": null,
+				"accessPointList": [
+					{
+						"id": "9912eaee-8eda-43b8-a991-6d056f57a454",
+						"name": "NEPort1",
+						"description": null,
+						"adminStatus": null,
+						"operStatus": null,
+						"neId": "2d9793c4-02dd-4b7d-975e-53dbc59c6d2b",
+						"edgePointRole": null,
+						"hubSpoke": null,
+						"type": null,
+						"workingLayer": null,
+						"typeSpecList": [
+							{
+								"uuid": "50b623a9-f4b6-471b-b949-948998fd5a4b",
+								"layerRate": null,
+								"ethernetTpSpec": {
+									"uuid": "3a9efe5c-d6c4-426d-ac8e-141ebfed934d",
+									"accessType": "dot1q",
+									"vlanAction": null,
+									"actionValue": null,
+									"qinqCvlanList": null,
+									"qinqSvlanList": null,
+									"dot1qVlanList": "43",
+									"addtionalInfo": []
+								},
+								"ipTpSpec": null
+							}
+						],
+						"peerCeTp": {
+							"uuid": "0f1d0673-8823-456a-8a13-6c0b28d1a3c0",
+							"ceID": "d45d9df5-4a1c-4f6f-8be0-dce91394f1c3",
+							"ceDirectNeID": "2d9793c4-02dd-4b7d-975e-53dbc59c6d2b",
+							"ceDirectTPID": "3eb1a10d-5d43-468c-80cc-5f067d784b8a",
+							"siteName": "SiteA",
+							"ceName": "SiteA",
+							"ceIfmasterIp": "wrong_ip",
+							"location": null,
+							"addtionalInfo": []
+						},
+						"inboundQosPolicyId": null,
+						"outboundQosPolicyId": null,
+						"inBoundTpCar": {
+							"uuid": "e437859c-8b62-4155-9703-1be47287ff41",
+							"enableCar": true,
+							"cir": 4,
+							"pir": 80,
+							"cbs": 4,
+							"pbs": 4
+						},
+						"outBoundTpCar": {
+							"uuid": "c4ca48fb-cdbb-4037-b6a7-013ade3f046d",
+							"enableCar": true,
+							"cir": 4,
+							"pir": 80,
+							"cbs": 4,
+							"pbs": 4
+						},
+						"routeProtocolSpecs": [],
+						"containedMainTP": "3eb1a10d-5d43-468c-80cc-5f067d784b8a",
+						"addtionalInfo": []
+					},
+					{
+						"id": "ff9b2bbb-0db1-414b-83db-cde41990e2b9",
+						"name": "NEPort2",
+						"description": null,
+						"adminStatus": null,
+						"operStatus": null,
+						"neId": "e29b2bbb-0db1-414b-83db-cde41990e2b9",
+						"edgePointRole": null,
+						"hubSpoke": null,
+						"type": null,
+						"workingLayer": null,
+						"typeSpecList": [
+							{
+								"uuid": "193de5c9-82b0-4d71-b44e-9f12eaab26cb",
+								"layerRate": null,
+								"ethernetTpSpec": {
+									"uuid": "de18a6ce-fea3-46ce-b75a-7c02e3853702",
+									"accessType": "dot1q",
+									"vlanAction": null,
+									"actionValue": null,
+									"qinqCvlanList": null,
+									"qinqSvlanList": null,
+									"dot1qVlanList": "54",
+									"addtionalInfo": []
+								},
+								"ipTpSpec": null
+							}
+						],
+						"peerCeTp": {
+							"uuid": "a9edf782-e534-4768-a6a4-9b8022953cea",
+							"ceID": null,
+							"ceDirectNeID": null,
+							"ceDirectTPID": null,
+							"siteName": "site_t_1",
+							"ceName": "site_t_1",
+							"ceIfmasterIp": "wrong_ip",
+							"location": null,
+							"addtionalInfo": []
+						},
+						"inboundQosPolicyId": null,
+						"outboundQosPolicyId": null,
+						"inBoundTpCar": {
+							"uuid": "feefe322-ad7d-4060-8ea2-a74efeb132ac",
+							"enableCar": true,
+							"cir": 4,
+							"pir": 80,
+							"cbs": 4,
+							"pbs": 4
+						},
+						"outBoundTpCar": {
+							"uuid": "e9cb1fd2-72fe-4a45-aee3-2b355e5f873d",
+							"enableCar": true,
+							"cir": 4,
+							"pir": 80,
+							"cbs": 4,
+							"pbs": 4
+						},
+						"routeProtocolSpecs": [],
+						"containedMainTP": "3d1af9bd-0014-40d7-8412-ab25c92d9941",
+						"addtionalInfo": []
+					}
+				],
+				"addtionalInfo": null
+			}
+		}
+	},
+	"response": {
+		"status": 200,
+		"json": {
+			"errorCode": "overlayvpn.operation.success",
+			"descArg": "",
+			"reasonArg": "",
+			"detailArg": "",
+			"adviceArg": "",
+			"httpCode": 200,
+			"message": "",
+			"smallErrorCodeList": null,
+			"successed": null,
+			"fail": null,
+			"data": null
+		}
+	}
+}

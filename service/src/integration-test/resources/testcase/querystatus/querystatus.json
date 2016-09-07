@@ -1,0 +1,13 @@
+{
+	"request": {
+		"uri": "/openoapi/sdnol2vpn/v1/l2vpns/{l2vpnid}/status",
+		"method": "get",
+		"headers": {
+			"Content-Type": "application/json;charset=UTF-8"
+		}
+	},
+	"response": {
+		"status": 200,
+		"json": null
+	}
+}
