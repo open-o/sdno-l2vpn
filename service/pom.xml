@@ -8,7 +8,6 @@
     </parent>
 
     <artifactId>org.openo.sdno.l2vpnservice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>L2vpnService</name>
 
