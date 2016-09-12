@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractVpnBasicInfoDao;
 import org.springframework.stereotype.Repository;
 
 /**
- * l2vpn basic info dao class.<br/>
+ * l2vpn basic info dao class.<br>
  * 
  * @author
  * @version SDNO 0.5 Aug 8, 2016
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Repository;
 public class L2VpnBasicInfoDao extends AbstractVpnBasicInfoDao<L2VpnBasicInfoPo> {
 
     /**
-     * get the po object class.<br/>
+     * get the po object class.<br>
      * 
      * @return class of the po object.
      * @since SDNO 0.5

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import org.openo.baseservice.remoteservice.exception.ServiceException;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
 
 /**
- * L2vpn query service interface.<br/>
+ * L2vpn query service interface.<br>
  * 
  * @author
  * @version SDNO 0.5 Aug 8, 2016
@@ -31,7 +31,7 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
 public interface L2VpnQueryService {
 
     /**
-     * get detail of the Mo detail of given uuid.<br/>
+     * get detail of the Mo detail of given uuid.<br>
      * 
      * @param uuid uuid of the vpn.
      * @param request http request context.
@@ -42,7 +42,7 @@ public interface L2VpnQueryService {
     Vpn getDetail(String uuid, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get status of vpn Mo. <br/>
+     * get status of vpn Mo. <br>
      * 
      * @param vpn The vpn Mo
      * @param request http request context.
@@ -53,7 +53,7 @@ public interface L2VpnQueryService {
     Vpn getStatus(Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * query details of the vpn.<br/>
+     * query details of the vpn.<br>
      * 
      * @param uuid uuid of the vpn.
      * @return vpn data of the given uuid.
@@ -63,7 +63,7 @@ public interface L2VpnQueryService {
     Vpn queryDetail(final String uuid) throws ServiceException;
 
     /**
-     * check if vpn is active,one vpn is active only when O and C are both active,<br/>
+     * check if vpn is active,one vpn is active only when O and C are both active,<br>
      * 
      * @param vpn the given vpn model.
      * @param controllerId uuid of the controller.

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,7 +25,7 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
 import org.openo.sdno.model.servicemodel.vpn.VpnVo;
 
 /**
- * L2vpn operation interface. <br/>
+ * L2vpn operation interface. <br>
  * 
  * @author
  * @version SDNO 0.5 Aug 8, 2016
@@ -33,7 +33,7 @@ import org.openo.sdno.model.servicemodel.vpn.VpnVo;
 public interface L2VpnService extends IService {
 
     /**
-     * create L2vpn by vpn model.<br/>
+     * create L2vpn by vpn model.<br>
      * 
      * @param vpnVo vpn to create.
      * @param request http request context.
@@ -44,7 +44,7 @@ public interface L2VpnService extends IService {
     Vpn create(VpnVo vpnVo, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * delete the vpn represented by the given vpn.<br/>
+     * delete the vpn represented by the given vpn.<br>
      * 
      * @param vpn the vpn to delete .
      * @param request http request context.
@@ -55,7 +55,7 @@ public interface L2VpnService extends IService {
     Vpn delete(final Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get detail of the Mo detail of given uuid.<br/>
+     * get detail of the Mo detail of given uuid.<br>
      * 
      * @param uuid uuid of the vpn.
      * @param request http request context.
@@ -66,7 +66,7 @@ public interface L2VpnService extends IService {
     Vpn getDetail(String uuid, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get status of vpn Mo. <br/>
+     * get status of vpn Mo. <br>
      * 
      * @param vpn The vpn Mo
      * @param request http request context.
@@ -77,7 +77,7 @@ public interface L2VpnService extends IService {
     Vpn getStatus(final Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * Modify L2vpn by vpn model. <br/>
+     * Modify L2vpn by vpn model. <br>
      * 
      * @param vpn The modified data
      * @param request The http request context

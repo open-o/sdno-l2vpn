@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,7 +26,7 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
 import org.openo.sdno.wanvpn.inventory.sdk.util.InventoryProxy;
 
 /**
- * Util class for controller.<br/>
+ * Util class for controller.<br>
  * 
  * @author
  * @version SDNO 0.5 Aug 8, 2016
@@ -37,7 +37,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller type from the given vpn model.<br/>
+     * get controller type from the given vpn model.<br>
      * 
      * @param vpn vpn model containing controller.
      * @return controller type.
@@ -57,7 +57,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller type from the given tp model.<br/>
+     * get controller type from the given tp model.<br>
      * 
      * @param tp vpn model containing controller.
      * @return controller type.
@@ -77,7 +77,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller mo from the given tp model.<br/>
+     * get controller mo from the given tp model.<br>
      * 
      * @param tp vpn model containing controller.
      * @return controller mo.
@@ -106,7 +106,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller mo by ne uuid.<br/>
+     * get controller mo by ne uuid.<br>
      * 
      * @param neId uuid of ne.
      * @return controller mo.
@@ -135,7 +135,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller uuid by vpn model.<br/>
+     * get controller uuid by vpn model.<br>
      * 
      * @param vpn given vpn model.
      * @return uuid of the controller.
@@ -151,7 +151,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller uuid by tp model.<br/>
+     * get controller uuid by tp model.<br>
      * 
      * @param tp given vpn model.
      * @return uuid of the controller.
@@ -167,7 +167,7 @@ public class ControllerUtils {
     }
 
     /**
-     * get vpn type of the given vpn model.<br/>
+     * get vpn type of the given vpn model.<br>
      * 
      * @param vpn the given vpn.
      * @return type of the vpn.

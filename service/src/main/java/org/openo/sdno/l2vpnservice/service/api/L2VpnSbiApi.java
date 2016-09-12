@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,6 +19,7 @@ package org.openo.sdno.l2vpnservice.service.api;
 import java.text.MessageFormat;
 
 import org.openo.baseservice.remoteservice.exception.ServiceException;
+import org.openo.baseservice.roa.util.restclient.RestfulParametes;
 import org.openo.baseservice.roa.util.restclient.RestfulResponse;
 import org.openo.sdno.framework.container.util.JsonUtil;
 import org.openo.sdno.l2vpnservice.common.L2VpnSvcErrorCode;
@@ -34,7 +35,7 @@ import org.openo.sdno.wanvpn.util.rest.RestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * l2vpn sbi api class.<br/>
+ * l2vpn sbi api class.<br>
  * 
  * @author
  * @version SDNO 0.5 Aug 9, 2016
@@ -53,9 +54,12 @@ public abstract class L2VpnSbiApi implements SbiApiService {
 
     @Override
     public L2Vpn deleteByUuid(final String controllerId, final String uuid) throws ServiceException {
-        final RestfulResponse response = RestUtil.sendDeleteRequest(
-                MessageFormat.format(getDeleteUrl(), URLEncoderUtil.encode(controllerId), URLEncoderUtil.encode(uuid)),
-                RestUtil.getRestfulParametes(), OwnerInfoThreadLocal.getHttpServletRequest());
+
+        RestfulParametes restfulParametes = RestUtil.getRestfulParametes();
+        restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
+        final RestfulResponse response =
+                RestUtil.sendDeleteRequest(MessageFormat.format(getDeleteUrl(), URLEncoderUtil.encode(uuid)),
+                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
         handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.DELETE_CONTROLLER_FAIL);
         return L2VpnSbiApi.getVpnFromResponse(response);
     }
@@ -67,10 +71,11 @@ public abstract class L2VpnSbiApi implements SbiApiService {
 
     @Override
     public L2Vpn queryStatus(final String controllerId, final String uuid) throws ServiceException {
-        final RestfulResponse response = RestUtil.sendGetRequest(
-                MessageFormat.format(getQueryStatusUrl(), URLEncoderUtil.encode(controllerId),
-                        URLEncoderUtil.encode(uuid)),
-                RestUtil.getRestfulParametes(), OwnerInfoThreadLocal.getHttpServletRequest());
+        RestfulParametes restfulParametes = RestUtil.getRestfulParametes();
+        restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
+        final RestfulResponse response =
+                RestUtil.sendGetRequest(MessageFormat.format(getQueryStatusUrl(), URLEncoderUtil.encode(uuid)),
+                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
         return handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.GET_STATUS_CONTROLLER_FAIL,
                 L2Vpn.class);
     }
@@ -82,9 +87,11 @@ public abstract class L2VpnSbiApi implements SbiApiService {
 
     @Override
     public L2Vpn getDetail(final String controllerId, final String uuid) throws ServiceException {
-        final RestfulResponse response = RestUtil.sendGetRequest(
-                MessageFormat.format(getDetailUrl(), URLEncoderUtil.encode(controllerId), URLEncoderUtil.encode(uuid)),
-                RestUtil.getRestfulParametes(), OwnerInfoThreadLocal.getHttpServletRequest());
+        RestfulParametes restfulParametes = RestUtil.getRestfulParametes();
+        restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
+        final RestfulResponse response =
+                RestUtil.sendGetRequest(MessageFormat.format(getDetailUrl(), URLEncoderUtil.encode(uuid)),
+                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
         return handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.GET_CONTROLLER_FAIL, L2Vpn.class);
     }
 

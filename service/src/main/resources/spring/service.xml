@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2016 Huawei Technologies Co., Ltd.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:ctx="http://www.springframework.org/schema/context" xmlns:context="http://www.springframework.org/schema/context"
 
@@ -11,7 +27,7 @@
     http://cxf.apache.org/schemas/jaxrs.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="org.openo.sdno.cbb.wanvpn.dao" />
+    <context:component-scan base-package="org.openo.sdno.wanvpn.dao" />
     <context:component-scan base-package="org.openo.sdno.l2vpnservice.dao" />
     <context:component-scan base-package="org.openo.sdno.l2vpnservice.service" />
 
@@ -77,46 +93,46 @@
 
     <bean id="sbiApiService" class="org.openo.sdno.l2vpnservice.service.api.VPWSVpnSbiApi"></bean>
 
-    <bean id="responsTranslator" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl"></bean>
+    <bean id="responsTranslator" class="org.openo.sdno.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl"></bean>
 
     <bean id="l2VpnTpTypeSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnTpTypeSpecDao">
         <property name="ethernetTpSpecDao" ref="l2VpnEthernetTpSpecDao" />
         <property name="ipTpSpecDao" ref="l2VpnIpTpSpecDao" />
     </bean>
-    
+
     <bean id="l2VpnEthernetTpSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnEthernetTpSpecDao"></bean>
 
     <bean id="l2VpnIpTpSpecDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnIpTpSpecDao"></bean>
 
     <bean id="l2VpnCeTpDao" class="org.openo.sdno.l2vpnservice.dao.L2VpnCeTpDao"></bean>
-    
-    <bean id="invDao" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.PuerInvDAOImpl">
-       <property name="puerObjInvService" ref="puerInvServiceNbiBean" />
-       <property name="puerComplexService" ref="puerInvComplexNbiBean" />
+
+    <bean id="invDao" class="org.openo.sdno.wanvpn.inventory.sdk.impl.PuerInvDAOImpl">
+        <property name="puerObjInvService" ref="puerInvServiceNbiBean" />
+        <property name="puerComplexService" ref="puerInvComplexNbiBean" />
     </bean>
-    <bean id="puerInvServiceNbiBean" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.nbi.PuerInvServiceNbiBean">
+    <bean id="puerInvServiceNbiBean" class="org.openo.sdno.wanvpn.inventory.sdk.impl.nbi.PuerInvServiceNbiBean">
     </bean>
-    <bean id="puerInvComplexNbiBean" class="org.openo.sdno.cbb.wanvpn.inventory.sdk.impl.nbi.PuerInvComplexNbiBean">
+    <bean id="puerInvComplexNbiBean" class="org.openo.sdno.wanvpn.inventory.sdk.impl.nbi.PuerInvComplexNbiBean">
     </bean>
-    
-    <bean id="translatorProvider" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.L2TranslatorProviderImpl">
+
+    <bean id="translatorProvider" class="org.openo.sdno.wanvpn.translator.uniformsbi.L2TranslatorProviderImpl">
         <property name="l2VpnTranslator" ref="uniformL2VpnTranslatorImpl" />
         <property name="l2AcTranslator" ref="uniformL2AcTranslatorImpl" />
         <property name="responsTranslator" ref="uniformResponsTranslatorImpl" />
     </bean>
-    
-    <bean id="uniformL2VpnTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.L2VpnTranslatorImpl">
+
+    <bean id="uniformL2VpnTranslatorImpl" class="org.openo.sdno.wanvpn.translator.uniformsbi.impl.L2VpnTranslatorImpl">
     </bean>
-    
-    <bean id="uniformL2AcTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.L2AcTranslatorImpl">
+
+    <bean id="uniformL2AcTranslatorImpl" class="org.openo.sdno.wanvpn.translator.uniformsbi.impl.L2AcTranslatorImpl">
     </bean>
-    
-    <bean id="uniformResponsTranslatorImpl" class="org.openo.sdno.cbb.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl">
+
+    <bean id="uniformResponsTranslatorImpl" class="org.openo.sdno.wanvpn.translator.uniformsbi.impl.ResponsTranslatorImpl">
     </bean>
-    
-    <bean id="translatorCtxFactory" class="org.openo.sdno.cbb.wanvpn.translator.impl.TranslatorCtxFactoryImpl">
+
+    <bean id="translatorCtxFactory" class="org.openo.sdno.wanvpn.translator.impl.TranslatorCtxFactoryImpl">
     </bean>
-    
+
 </beans>
 
 

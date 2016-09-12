@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * VPWS vpn service.<br/>
+ * VPWS vpn service.<br>
  * 
  * @author
  * @version SDNO 0.5 Aug 9, 2016
@@ -51,20 +51,15 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
 
     static class UrlV1 {
 
-        static final String PROVISION =
-                "/rest/plugin_adapter_alu_nsp/v1/controllers/{0}/united-sbi-service-l2vpn-vpws:service/l2vpnVpwss";
+        static final String PROVISION = "/openoapi/sbi-l2vpn-vpws/v1/l2vpn_vpwss";
 
-        static final String QUERY_STATUS =
-                "/rest/plugin_adapter_alu_nsp/v1/controllers/{0}/united-sbi-service-l2vpn-vpws:service/l2vpnVpwss/l2vpnVpws/{1}";
+        static final String QUERY_STATUS = "/openoapi/sbi-l2vpn-vpws/v1/l2vpn_vpwss/{0}";
 
-        static final String MODIFY_DESC =
-                "/rest/plugin_adapter_alu_nsp/v1/controllers/{0}/united-sbi-service-l2vpn-vpws:service/l2vpnVpwss/l2vpnVpws/{1}";
+        static final String MODIFY_DESC = "/openoapi/sbi-l2vpn-vpws/v1/l2vpn_vpwss/{0}";
 
-        static final String DELETE_BY_UUID =
-                "/rest/plugin_adapter_alu_nsp/v1/controllers/{0}/united-sbi-service-l2vpn-vpws:service/l2vpnVpwss/l2vpnVpws/{1}";
+        static final String DELETE_BY_UUID = "/openoapi/sbi-l2vpn-vpws/v1/l2vpn_vpwss/{0}";
 
-        static final String GET_DETAIL =
-                "/rest/plugin_adapter_alu_nsp/v1/controllers/{0}/united-sbi-service-l2vpn-vpws:service/l2vpnVpwss/l2vpnVpws/{1}";
+        static final String GET_DETAIL = "/openoapi/sbi-l2vpn-vpws/v1/l2vpn_vpwss/{0}";
 
         private UrlV1() {
             // default constructor
@@ -77,10 +72,10 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
         paras.put("l2vpnVpws", vpn);
         LOGGER.info("l2vpn is :" + JsonUtil.toJson(paras));
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
+        restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
-        final RestfulResponse response =
-                RestUtil.sendPostRequest(MessageFormat.format(getProvisionUrl(), URLEncoderUtil.encode(controllerId)),
-                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
+        final RestfulResponse response = RestUtil.sendPostRequest(getProvisionUrl(), restfulParametes,
+                OwnerInfoThreadLocal.getHttpServletRequest());
         handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.CREATE_CONTROLLER_FAIL);
 
         return L2VpnSbiApi.getVpnFromResponse(response);
@@ -93,11 +88,11 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
         LOGGER.info("l2vpn is :" + JsonUtil.toJson(paras));
 
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
+        restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
-        final RestfulResponse response = RestUtil.sendPutRequest(
-                MessageFormat.format(getModifyDescUrl(), URLEncoderUtil.encode(controllerId),
-                        URLEncoderUtil.encode(vpn.getUuid())),
-                restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
+        final RestfulResponse response =
+                RestUtil.sendPutRequest(MessageFormat.format(getModifyDescUrl(), URLEncoderUtil.encode(vpn.getUuid())),
+                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
         handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.UPDATEDESC_CONTROLLER_FAIL);
         return L2VpnSbiApi.getVpnFromResponse(response);
     }

@@ -14,18 +14,23 @@
  * limitations under the License.
  */
 
-package org.openo.sdno.l2vpnservice.mocoserver;
+package org.openo.sdno.l2vpnservice.dao;
 
-import org.openo.sdno.testframework.moco.MocoHttpServer;
+import org.openo.sdno.model.db.l3vpn.L3VpnRouteProtocolSpecPo;
+import org.openo.sdno.wanvpn.dao.vpn.AbstractRouteProtocolSpecDao;
+import org.springframework.stereotype.Repository;
 
-public class CreateL2vpnFailSbiAdapterlServer extends MocoHttpServer {
-
-    private static final String CREATE_L2VPN_FAIL_FILE =
-            "src/integration-test/resources/l2vpnsbiadapter/createl2vpnfail.json";
+/**
+ * Keep this class here to make sure service can be started, will be deleted soon.
+ *
+ * @author
+ * @version SDNO 0.5 Aug 2, 2016
+ */
+@Repository("l2VpnRouteProtocolSpecDao")
+public class L2VpnRouteProtocolSpecDao extends AbstractRouteProtocolSpecDao<L3VpnRouteProtocolSpecPo> {
 
     @Override
-    public void addRequestResponsePairs() {
-        this.addRequestResponsePair(CREATE_L2VPN_FAIL_FILE);
+    protected Class<L3VpnRouteProtocolSpecPo> getPoClass() {
+        return L3VpnRouteProtocolSpecPo.class;
     }
-
 }
