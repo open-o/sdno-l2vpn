@@ -9,7 +9,6 @@
 
     <artifactId>org.openo.sdno.l2vpnservice</artifactId>
     <packaging>war</packaging>
-    <name>L2vpnService</name>
 
     <dependencies>
         <dependency>
@@ -152,5 +151,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${package.name}</finalName>
+    </build>
 
 </project>
