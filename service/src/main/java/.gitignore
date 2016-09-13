@@ -1,0 +1,13 @@
+.metadata
+.project
+.classpath
+.settings
+target
+build
+pkgzip_ssl
+*.jar
+*.class
+*.war
+*.pyc
+.idea
+*.iml
