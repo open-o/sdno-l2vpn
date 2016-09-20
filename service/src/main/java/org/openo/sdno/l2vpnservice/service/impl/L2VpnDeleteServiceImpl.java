@@ -16,8 +16,6 @@
 
 package org.openo.sdno.l2vpnservice.service.impl;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-
 import java.util.Collections;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +28,7 @@ import org.openo.sdno.l2vpnservice.dao.L2VpnDao;
 import org.openo.sdno.l2vpnservice.service.inf.L2VpnDeleteService;
 import org.openo.sdno.l2vpnservice.service.inf.L2VpnQueryService;
 import org.openo.sdno.l2vpnservice.service.provider.SbiApiServiceProvider;
-import org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
-import org.openo.sdno.model.servicemodel.vpn.VpnBasicInfo;
 import org.openo.sdno.wanvpn.util.error.ServiceExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -65,8 +61,6 @@ public class L2VpnDeleteServiceImpl implements L2VpnDeleteService {
         }
         final String ctrlUuid = ControllerUtils.getControllerUUID(vpn);
 
-        checkStatus(vpn, ctrlUuid);
-
         deleteFromController(vpn, ctrlUuid);
         deleteFromDb(vpn);
         return vpn;
@@ -80,27 +74,6 @@ public class L2VpnDeleteServiceImpl implements L2VpnDeleteService {
     private void deleteFromDb(final Vpn vpn) throws ServiceException {
         l2VpnDao.delMos(Collections.singletonList(vpn));
 
-    }
-
-    private void checkStatus(final Vpn vpn, final String ctrlUuid) throws ServiceException {
-        checkDataStatus(vpn);
-
-        checkControllerStatus(vpn, ctrlUuid);
-    }
-
-    private void checkDataStatus(final Vpn vpn) throws ServiceException {
-        VpnBasicInfo basicInfo = vpn.getVpnBasicInfo();
-        if(basicInfo != null && AdminStatus.ACTIVE.getCommonName().equals(basicInfo.getAdminStatus())) {
-            throw new ServiceException(L2VpnSvcErrorCode.DELETE_ACTIVE_VPN, EMPTY);
-        }
-    }
-
-    private void checkControllerStatus(final Vpn vpn, String ctrlUuid) throws ServiceException {
-        final boolean active = l2VpnQueryService.isVpnActive(vpn, ctrlUuid);
-
-        if(active) {
-            throw ServiceExceptionUtil.getServiceException(L2VpnSvcErrorCode.DELETE_ACTIVE_VPN);
-        }
     }
 
     public void setL2VpnDao(L2VpnDao l2VpnDao) {

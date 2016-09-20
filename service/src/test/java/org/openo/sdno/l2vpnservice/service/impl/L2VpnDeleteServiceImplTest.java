@@ -16,17 +16,10 @@
 
 package org.openo.sdno.l2vpnservice.service.impl;
 
-import static org.junit.Assert.assertTrue;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
 import org.openo.baseservice.remoteservice.exception.ServiceException;
-import org.openo.sdno.model.servicemodel.vpn.Vpn;
-import org.openo.sdno.model.servicemodel.vpn.VpnBasicInfo;
 
 import mockit.Mocked;
 
@@ -39,31 +32,6 @@ public class L2VpnDeleteServiceImplTest {
     public void testDeleteNull() throws ServiceException {
         L2VpnDeleteServiceImpl demo = new L2VpnDeleteServiceImpl();
         demo.delete(null, request);
-    }
-
-    @Test
-    public void testCheckDataStatusNull() throws NoSuchMethodException, SecurityException, IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
-        L2VpnDeleteServiceImpl demo = new L2VpnDeleteServiceImpl();
-        Method method = demo.getClass().getDeclaredMethod("checkDataStatus", Vpn.class);
-        method.setAccessible(true);
-        Vpn vpn = new Vpn();
-        method.invoke(demo, vpn);
-        assertTrue(true);
-
-    }
-
-    @Test
-    public void testCheckDataStatusNotNull() throws NoSuchMethodException, SecurityException, IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
-        L2VpnDeleteServiceImpl demo = new L2VpnDeleteServiceImpl();
-        Method method = demo.getClass().getDeclaredMethod("checkDataStatus", Vpn.class);
-        method.setAccessible(true);
-        Vpn vpn = new Vpn();
-        VpnBasicInfo basicInfo = new VpnBasicInfo();
-        vpn.setVpnBasicInfo(basicInfo);
-        method.invoke(demo, vpn);
-        assertTrue(true);
     }
 
 }
