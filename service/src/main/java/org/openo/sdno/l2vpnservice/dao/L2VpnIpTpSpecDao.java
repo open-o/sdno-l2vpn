@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 /**
  * IpTpSpec table access class.<br>
  * 
- * @since NetMatrix V1R2C10, 2015年10月8日
+ * @since NetMatrix V1R2C10, October 8, 2015
  */
 @Repository("l2VpnIpTpSpecDao")
 public class L2VpnIpTpSpecDao extends AbstractIpTpSpecDao<L2VpnIpTpSpecPo> {

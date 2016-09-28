@@ -33,7 +33,7 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
  * ControllerUtilsTest class.<br>
  * 
  * @author
- * @version SDNO 0.5 2016年8月11日
+ * @version SDNO 0.5 August 11, 2016
  */
 public class ControllerUtilsTest {
 
