@@ -1,0 +1,14 @@
+{
+  "serviceName": "sdnol2vpn",
+  "version": "v1",
+  "url": "/openoapi/sdnol2vpn/v1",
+  "protocol": "REST",
+  "visualRange": "1",
+  "nodes": [
+    {
+      "ip": "",
+      "port": "8509",
+      "ttl": 0
+    }
+  ]
+}
