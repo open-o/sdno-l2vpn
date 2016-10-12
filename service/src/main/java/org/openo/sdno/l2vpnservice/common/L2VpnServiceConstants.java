@@ -19,10 +19,10 @@ package org.openo.sdno.l2vpnservice.common;
 import javax.ws.rs.core.MediaType;
 
 /**
- * constant defination class.<br>
+ * constant definition class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public class L2VpnServiceConstants {
 

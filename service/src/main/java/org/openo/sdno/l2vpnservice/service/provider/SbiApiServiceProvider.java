@@ -21,19 +21,19 @@ import org.openo.sdno.l2vpnservice.service.inf.SbiApiService;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
 
 /**
- * l2vpn sercice provider.<br>
+ * L2vpn service provider.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 public class SbiApiServiceProvider {
 
     private SbiApiService sbiApiService;
 
     /**
-     * get sbi api service according to vpn model.<br>
+     * Get SBI API service according to VPN model.<br>
      * 
-     * @param vpn vpn model.
+     * @param vpn VPN model.
      * @return SbiApiService instance.
      * @throws ServiceException if data base failed.
      * @since SDNO 0.5

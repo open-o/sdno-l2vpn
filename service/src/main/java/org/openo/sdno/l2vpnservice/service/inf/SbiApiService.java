@@ -24,7 +24,7 @@ import org.openo.sdno.model.uniformsbi.l2vpn.L2Vpn;
  * L2vpn operation in adapter. <br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface SbiApiService extends IService {
 

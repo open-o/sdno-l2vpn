@@ -26,48 +26,48 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
  * L2vpn query service interface.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface L2VpnQueryService {
 
     /**
-     * get detail of the Mo detail of given uuid.<br>
+     * get detail of the MO detail of given UUID.<br>
      * 
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn mo of the given uuid.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn MO of the given UUID.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn getDetail(String uuid, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get status of vpn Mo. <br>
+     * get status of VPN MO. <br>
      * 
-     * @param vpn The vpn Mo
-     * @param request http request context.
-     * @return vpn mo
+     * @param vpn The VPN MO
+     * @param request HTTP request context.
+     * @return Vpn MO
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn getStatus(Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * query details of the vpn.<br>
+     * query details of the VPN.<br>
      * 
-     * @param uuid uuid of the vpn.
-     * @return vpn data of the given uuid.
+     * @param uuid UUID of the VPN.
+     * @return Vpn data of the given UUID.
      * @throws ServiceException if inner error happens.
      * @since SDNO 0.5
      */
     Vpn queryDetail(final String uuid) throws ServiceException;
 
     /**
-     * check if vpn is active,one vpn is active only when O and C are both active,<br>
+     * check if VPN is active,one VPN is active only when O and C are both active,<br>
      * 
-     * @param vpn the given vpn model.
-     * @param controllerId uuid of the controller.
-     * @return if the given vpn is actived.
+     * @param vpn the given VPN model.
+     * @param controllerId UUID of the controller.
+     * @return if the given VPN is active.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */

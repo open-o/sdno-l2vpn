@@ -29,7 +29,7 @@ import org.openo.sdno.wanvpn.inventory.sdk.util.InventoryProxy;
  * Utility class for controller.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public class ControllerUtils {
 
@@ -37,9 +37,9 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller type from the given vpn model.<br>
+     * get controller type from the given VPN model.<br>
      * 
-     * @param vpn vpn model containing controller.
+     * @param vpn VPN model containing controller.
      * @return controller type.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
@@ -57,9 +57,9 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller type from the given tp model.<br>
+     * get controller type from the given TP model.<br>
      * 
-     * @param tp vpn model containing controller.
+     * @param tp VPN model containing controller.
      * @return controller type.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
@@ -77,10 +77,10 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller mo from the given tp model.<br>
+     * get controller MO from the given TP model.<br>
      * 
-     * @param tp vpn model containing controller.
-     * @return controller mo.
+     * @param tp VPN model containing controller.
+     * @return controller MO.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
      */
@@ -106,10 +106,10 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller mo by ne uuid.<br>
+     * get controller MO by network element UUID.<br>
      * 
-     * @param neId uuid of ne.
-     * @return controller mo.
+     * @param neId UUID of NE.
+     * @return controller MO.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
      */
@@ -135,10 +135,10 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller uuid by vpn model.<br>
+     * get controller UUID by VPN model.<br>
      * 
-     * @param vpn given vpn model.
-     * @return uuid of the controller.
+     * @param vpn given VPN model.
+     * @return UUID of the controller.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
      */
@@ -151,10 +151,10 @@ public class ControllerUtils {
     }
 
     /**
-     * get controller uuid by tp model.<br>
+     * get controller UUID by TP model.<br>
      * 
-     * @param tp given vpn model.
-     * @return uuid of the controller.
+     * @param tp given VPN model.
+     * @return UUID of the controller.
      * @throws ServiceException if inner exception happens.
      * @since SDNO 0.5
      */
@@ -167,10 +167,10 @@ public class ControllerUtils {
     }
 
     /**
-     * get vpn type of the given vpn model.<br>
+     * get VPN type of the given VPN model.<br>
      * 
-     * @param vpn the given vpn.
-     * @return type of the vpn.
+     * @param vpn the given VPN.
+     * @return type of the VPN.
      * @since SDNO 0.5
      */
     public static String getVpnType(Vpn vpn) {

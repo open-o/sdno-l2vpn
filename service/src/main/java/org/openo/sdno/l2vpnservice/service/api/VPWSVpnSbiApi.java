@@ -35,10 +35,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * VPWS vpn service.<br>
+ * VPWS VPN service.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 @Service("vpwsVpnSbiApi")
 public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {

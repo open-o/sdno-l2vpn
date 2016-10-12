@@ -42,7 +42,7 @@ import org.springframework.util.CollectionUtils;
  * L2VPN TP data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnTpDao")
 public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
@@ -222,9 +222,9 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
     }
 
     /**
-     * get the po object class.<br>
+     * get the PO object class.<br>
      * 
-     * @return class of the po object.
+     * @return class of the PO object.
      * @since SDNO 0.5
      */
     @Override

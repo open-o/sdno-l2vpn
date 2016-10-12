@@ -40,7 +40,7 @@ import org.springframework.stereotype.Repository;
  * L2VPN SBI data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 @Repository("L2VpnSbiDao")
 public class L2VpnSbiVpnDao extends DefaultDao<L2VpnSbiPo, L2Vpn> {
@@ -59,11 +59,11 @@ public class L2VpnSbiVpnDao extends DefaultDao<L2VpnSbiPo, L2Vpn> {
 
     @Override
     public List<L2Vpn> assembleMo(final List<L2VpnSbiPo> l2VpnSbiPos) throws ServiceException {
-        // get the mapping of vpnid to ac list
+        // get the mapping of VPNID to AC list
         final Map<String, List<L2Ac>> l2AcVpnMap = getAcVpnMap(DaoUtil.getPoModelUuids(l2VpnSbiPos));
 
         final List<L2Vpn> l2Vpns = new ArrayList<>(l2VpnSbiPos.size());
-        // fill ac list of vpn
+        // fill AC list of VPN
         for(final L2VpnSbiPo l2VpnSbiPo : l2VpnSbiPos) {
             final L2Vpn l2Vpn = l2VpnSbiPo.toSvcModel();
 
@@ -103,13 +103,13 @@ public class L2VpnSbiVpnDao extends DefaultDao<L2VpnSbiPo, L2Vpn> {
 
     @Override
     public void addMos(final List<L2Vpn> l2Vpns) throws ServiceException {
-        // extract ac list from vpn list
+        // extract AC list from VPN list
         final List<L2Ac> l2Acs = getL2AcsFromVpns(l2Vpns);
 
-        // save ac list
+        // save AC list
         addAcs(l2Acs);
 
-        // save vpn
+        // save VPN
         insert(DaoUtil.batchMoConvert(l2Vpns, getPoClass()));
     }
 

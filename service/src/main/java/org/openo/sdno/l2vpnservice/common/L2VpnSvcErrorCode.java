@@ -22,12 +22,12 @@ import org.openo.sdno.wanvpn.util.error.ErrorCodeUtils;
  * Error code class, defining the error code in l2vpn service.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public class L2VpnSvcErrorCode {
 
     /**
-     * app name
+     * application name
      */
     public static final String APP_NAME = "l2vpnservice";
 
@@ -38,19 +38,19 @@ public class L2VpnSvcErrorCode {
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "create_l2vpn_not_two_site");
 
     /**
-     * delete active vpn
+     * delete active VPN
      */
     public static final String DELETE_ACTIVE_VPN =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "delete_active_vpn");
 
     /**
-     * vpn not exist
+     * VPN not exist
      */
     public static final String VPN_NOT_EXIST =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "vpn_not_exist");
 
     /**
-     * tp not exist
+     * TP not exist
      */
     public static final String TP_NOT_EXIST =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "tp", "tp_not_exist");
@@ -68,61 +68,61 @@ public class L2VpnSvcErrorCode {
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "topology_type_error");
 
     /**
-     * tp um error
+     * TP num error
      */
     public static final String VPN_TP_NUM_ERROR =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "tp_num_error");
 
     /**
-     * vpn name duplicate
+     * VPN name duplicate
      */
     public static final String L2VPN_NAME_DUPLICATE =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "vpn_name_duplicate");
 
     /**
-     * update vpn desc controller fail
+     * update VPN description controller fail
      */
     public static final String UPDATEDESC_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "update_vpn_desc_controller_fail");
 
     /**
-     * create vpn controller fail
+     * create VPN controller fail
      */
     public static final String CREATE_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "create_vpn_controller_fail");
 
     /**
-     * delete vpn controller fail
+     * delete VPN controller fail
      */
     public static final String DELETE_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "delete_vpn_controller_fail");
 
     /**
-     * update vpn status controller fail
+     * update VPN status controller fail
      */
     public static final String UPDATE_STATUS_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn_status", "update_vpn_status_controller_fail");
 
     /**
-     * get vpn status controller fail
+     * get VPN status controller fail
      */
     public static final String GET_STATUS_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn_status", "get_vpn_status_controller_fail");
 
     /**
-     * get vpn controller fail
+     * get VPN controller fail
      */
     public static final String GET_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "vpn", "get_vpn_controller_fail");
 
     /**
-     * tp not bind with vpn
+     * TP not bind with VPN
      */
     public static final String TP_NOT_BIND_WITH_VPN =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "tp", "tp_not_bind_with_vpn");
 
     /**
-     * modify qos para error
+     * modify QoS parameter error
      */
     public static final String CAR_PARA_ERROR =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "tp", "modify_qos_para_error");
@@ -134,25 +134,25 @@ public class L2VpnSvcErrorCode {
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "oper", "not_support");
 
     /**
-     * get te controller return fail
+     * get TE controller return fail
      */
     public static final String GET_TE_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(L2VpnSvcErrorCode.APP_NAME, "te", "get_te_controller_return_fail");
 
     /**
-     * create vpn tp controller fail
+     * create VPN TP controller fail
      */
     public static final String L2VPN_CREATE_TP_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(APP_NAME, "vpn", "create_vpn_tp_controller_fail");
 
     /**
-     * delete vpn tp controller fail
+     * delete VPN TP controller fail
      */
     public static final String L2VPN_DELETE_TP_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(APP_NAME, "vpn", "delete_vpn_tp_controller_fail");
 
     /**
-     * update vpn tp status controller fail
+     * update VPN TP status controller fail
      */
     public static final String L2VPN_UPDATE_TP_STATUS_CONTROLLER_FAIL =
             ErrorCodeUtils.getErrorCode(APP_NAME, "vpn", "update_vpn_tp_status_controller_fail");

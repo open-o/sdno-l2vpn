@@ -32,10 +32,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * l2vpn service implement.<br>
+ * L2vpn service implement.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 @Service("l2vpnService")
 public class L2vpnServiceImpl implements L2VpnService {

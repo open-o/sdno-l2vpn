@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
  * Keep this class here to make sure service can be started, will be deleted soon.
  *
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnRouteProtocolSpecDao")
 public class L2VpnRouteProtocolSpecDao extends AbstractRouteProtocolSpecDao<L3VpnRouteProtocolSpecPo> {

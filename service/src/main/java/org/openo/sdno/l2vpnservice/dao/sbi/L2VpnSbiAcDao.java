@@ -30,7 +30,7 @@ import org.springframework.stereotype.Repository;
  * L2VPN SBI AC data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 @Repository("L2VpnSbiAcDao")
 public class L2VpnSbiAcDao extends DefaultDao<L2VpnAcSbiPo, L2Ac> {
@@ -69,8 +69,8 @@ public class L2VpnSbiAcDao extends DefaultDao<L2VpnAcSbiPo, L2Ac> {
     }
 
     /**
-     * Convert mo to po using po.fromSvcModel
-     * set foreign key ids to empty string if the corresponding field in mo object is null.
+     * Convert MO to PO using po.fromSvcModel
+     * set foreign key IDs to empty string if the corresponding field in MO object is null.
      */
     private static List<L2VpnAcSbiPo> getPoForUpdate(final List<L2Ac> l2Acs) {
         final List<L2VpnAcSbiPo> pos = new ArrayList<>(l2Acs.size());

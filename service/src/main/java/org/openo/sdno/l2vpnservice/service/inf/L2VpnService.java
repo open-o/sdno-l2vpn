@@ -28,60 +28,60 @@ import org.openo.sdno.model.servicemodel.vpn.VpnVo;
  * L2vpn operation interface. <br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface L2VpnService extends IService {
 
     /**
-     * create L2vpn by vpn model.<br>
+     * Create L2vpn by VPN model.<br>
      * 
-     * @param vpnVo vpn to create.
-     * @param request http request context.
-     * @return vpn model created.
+     * @param vpnVo VPN to create.
+     * @param request HTTP request context.
+     * @return Vpn model created.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn create(VpnVo vpnVo, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * delete the vpn represented by the given vpn.<br>
+     * Delete the VPN represented by the given vpn.<br>
      * 
-     * @param vpn the vpn to delete .
-     * @param request http request context.
-     * @return the deleted vpn.
+     * @param vpn the VPN to delete .
+     * @param request HTTP request context.
+     * @return the deleted Vpn.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn delete(final Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get detail of the Mo detail of given uuid.<br>
+     * get detail of the MO detail of given UUID.<br>
      * 
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn mo of the given uuid.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn MO of the given UUID.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn getDetail(String uuid, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * get status of vpn Mo. <br>
+     * get status of VPN MO. <br>
      * 
-     * @param vpn The vpn Mo
-     * @param request http request context.
-     * @return vpn mo
+     * @param vpn The VPN MO
+     * @param request HTTP request context.
+     * @return Vpn MO
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */
     Vpn getStatus(final Vpn vpn, @Context HttpServletRequest request) throws ServiceException;
 
     /**
-     * Modify L2vpn by vpn model. <br>
+     * Modify L2vpn by VPN model. <br>
      * 
      * @param vpn The modified data
-     * @param request The http request context
-     * @return The vpn modified model
+     * @param request The HTTP request context
+     * @return The Vpn modified model
      * @throws ServiceException When modify exception
      * @since SDNO 0.5
      */

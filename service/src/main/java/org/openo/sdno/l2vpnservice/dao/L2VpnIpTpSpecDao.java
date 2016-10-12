@@ -29,9 +29,9 @@ import org.springframework.stereotype.Repository;
 public class L2VpnIpTpSpecDao extends AbstractIpTpSpecDao<L2VpnIpTpSpecPo> {
 
     /**
-     * get the po object class.<br>
+     * get the PO object class.<br>
      * 
-     * @return class of the po object.
+     * @return class of the PO object.
      * @since SDNO 0.5
      */
     @Override

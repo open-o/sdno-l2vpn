@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
  * L2VPN PW Spec access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnPWSpecDao")
 public class L2VpnPWSpecDao extends AbstractPWSpecDao<L2VpnPWSpecPo> {

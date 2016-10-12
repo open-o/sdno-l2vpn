@@ -31,10 +31,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * l2vpn update service implement.<br>
+ * L2vpn update service implement.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 @Service("l2vpnModifyService")
 public class L2VpnModifyServiceImpl implements L2VpnModifyService {

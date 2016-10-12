@@ -27,16 +27,16 @@ import org.openo.sdno.model.servicemodel.vpn.VpnVo;
  * L2vpn create interface.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface L2VpnCreateService {
 
     /**
-     * create L2vpn by vpn model.<br>
+     * create L2vpn by VPN model.<br>
      * 
-     * @param vpnVo vpn to create.
-     * @param request http request context.
-     * @return vpn model created.
+     * @param vpnVo VPN to create.
+     * @param request HTTP request context.
+     * @return Vpn model created.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */

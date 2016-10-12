@@ -26,16 +26,16 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
  * L2vpn delete interface.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface L2VpnDeleteService {
 
     /**
-     * delete the vpn represented by the given vpn.<br>
+     * delete the VPN represented by the given VPN.<br>
      * 
-     * @param vpn the vpn to delete .
-     * @param request http request context.
-     * @return the deleted vpn.
+     * @param vpn the VPN to delete .
+     * @param request HTTP request context.
+     * @return the deleted VPN.
      * @throws ServiceException if inner exceptions happens.
      * @since SDNO 0.5
      */

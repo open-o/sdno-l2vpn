@@ -21,18 +21,18 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractObjectIdentifierDao;
 import org.springframework.stereotype.Repository;
 
 /**
- * L2 vpn object identifier access dao.<br>
+ * L2 VPN object identifier access DAO.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 @Repository("l2VpnObjectIdentifierDao")
 public class L2VpnObjectIdentifierDao extends AbstractObjectIdentifierDao<L2VpnObjectIdentifierPo> {
 
     /**
-     * get the po object class.<br>
+     * get the PO object class.<br>
      * 
-     * @return class of the po object.
+     * @return class of the PO object.
      * @since SDNO 0.5
      */
     @Override

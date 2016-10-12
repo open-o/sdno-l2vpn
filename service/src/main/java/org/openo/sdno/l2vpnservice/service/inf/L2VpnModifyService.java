@@ -26,16 +26,16 @@ import org.openo.sdno.model.servicemodel.vpn.Vpn;
  * L2vpn modify interface. <br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 public interface L2VpnModifyService {
 
     /**
-     * Modify L2vpn by vpn model. <br>
+     * Modify L2vpn by VPN model. <br>
      * 
      * @param vpn The modified data
-     * @param request The http request context
-     * @return The vpn modified model
+     * @param request The HTTP request context
+     * @return The VPN modified model
      * @throws ServiceException When modify exception
      * @since SDNO 0.5
      */

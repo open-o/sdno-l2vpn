@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
  * L2VPN TP type spec data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnTpTypeSpecDao")
 public class L2VpnTpTypeSpecDao extends AbstractTpTypeSpecDao<L2VpnTpTypeSpecPo> {

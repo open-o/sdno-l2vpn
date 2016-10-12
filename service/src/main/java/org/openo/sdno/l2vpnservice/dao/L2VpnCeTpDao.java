@@ -21,18 +21,18 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractCeTpDao;
 import org.springframework.stereotype.Repository;
 
 /**
- * L2VPN ce tp access object class.<br>
+ * L2VPN CE TP access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnCeTpDao")
 public class L2VpnCeTpDao extends AbstractCeTpDao<L2VpnCeTpPo> {
 
     /**
-     * get the po object class.<br>
+     * get the PO object class.<br>
      * 
-     * @return class of the po object.
+     * @return class of the PO object.
      * @since SDNO 0.5
      */
     @Override

@@ -28,7 +28,7 @@ import org.springframework.stereotype.Repository;
  * L2VPN SBI tunnel policy data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 8, 2016
+ * @version SDNO 0.5 August 8, 2016
  */
 @Repository("L2VpnSbiTunnelPolicyDao")
 public class L2VpnSbiTunnelPolicyDao extends DefaultDao<L2VpnTunnelPolicySbiPo, TunnelPolicy> {

@@ -35,10 +35,10 @@ import org.openo.sdno.wanvpn.util.rest.RestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * l2vpn sbi api class.<br>
+ * L2vpn SBI API class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 public abstract class L2VpnSbiApi implements SbiApiService {
 

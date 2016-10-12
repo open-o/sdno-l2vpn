@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  * l2vpn service resource class.<br>
  *
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version SDNO 0.5 August 9, 2016
  */
 @Path("/sdnol2vpn/v1/l2vpns")
 public class L2VpnServiceResource extends IResource<L2VpnService> {
@@ -70,8 +70,8 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
     /**
      * create l2vpn.<br>
      *
-     * @param request http request context.
-     * @return vpn created.
+     * @param request HTTP request context.
+     * @return Vpn created.
      * @throws ServiceException if data base operation failed.
      * @since SDNO 0.5
      */
@@ -105,11 +105,11 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
     }
 
     /**
-     * delete vpn.<br>
+     * delete VPN.<br>
      *
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn created.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn created.
      * @throws ServiceException if data base operation failed.
      * @since SDNO 0.5
      */
@@ -149,11 +149,11 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
     }
 
     /**
-     * get detail of one vpn.<br>
+     * get detail of one VPN.<br>
      *
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn created.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn created.
      * @throws ServiceException if data base operation failed.
      * @since SDNO 0.5
      */
@@ -174,11 +174,11 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
     }
 
     /**
-     * get status of one vpn.<br>
+     * get status of one VPN.<br>
      *
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn created.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn created.
      * @throws ServiceException if data base operation failed.
      * @since SDNO 0.5
      */
@@ -200,11 +200,11 @@ public class L2VpnServiceResource extends IResource<L2VpnService> {
     }
 
     /**
-     * update one vpn.<br>
+     * update one VPN.<br>
      *
-     * @param uuid uuid of the vpn.
-     * @param request http request context.
-     * @return vpn created.
+     * @param uuid UUID of the VPN.
+     * @param request HTTP request context.
+     * @return Vpn created.
      * @throws ServiceException if data base operation failed.
      * @since SDNO 0.5
      */
