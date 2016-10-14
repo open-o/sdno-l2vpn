@@ -31,7 +31,7 @@ import org.openo.sdno.model.uniformsbi.l2vpn.L2Vpn;
 import org.openo.sdno.wanvpn.dao.DaoUtil;
 import org.openo.sdno.wanvpn.dao.DefaultDao;
 import org.openo.sdno.wanvpn.util.ModelUtil;
-import org.openo.sdno.wanvpn.util.constans.VpnConstants;
+import org.openo.sdno.wanvpn.util.constant.VpnConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
