@@ -89,7 +89,7 @@ public class ControllerUtils {
             return null;
         }
 
-        final ControllerMO controllerMO = tp.getContollerMO();
+        final ControllerMO controllerMO = tp.getControllerMO();
         if(null != controllerMO) {
             return controllerMO;
         }
@@ -97,11 +97,11 @@ public class ControllerUtils {
     }
 
     private static ControllerMO mGetControllerMo(final Tp tp) throws ServiceException {
-        if(null != tp.getContollerMO()) {
-            return tp.getContollerMO();
+        if(null != tp.getControllerMO()) {
+            return tp.getControllerMO();
         }
         ControllerMO queryController = InventoryProxy.queryController(tp.getNeId());
-        tp.setContollerMO(queryController);
+        tp.setControllerMO(queryController);
         return queryController;
     }
 
@@ -126,7 +126,7 @@ public class ControllerUtils {
 
         final Tp tp = tps.get(0);
 
-        final ControllerMO controllerMO = tp.getContollerMO();
+        final ControllerMO controllerMO = tp.getControllerMO();
 
         if(null != controllerMO) {
             return controllerMO;
