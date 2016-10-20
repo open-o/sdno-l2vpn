@@ -58,9 +58,9 @@ public class ControllerUtilsTest {
         Vpn vpn = new Vpn();
         List<Tp> list = new ArrayList<>();
         Tp tp = new Tp();
-        ControllerMO contollerMO = new ControllerMO();
-        contollerMO.setProductName("productName");
-        tp.setContollerMO(contollerMO);
+        ControllerMO controllerMo = new ControllerMO();
+        controllerMo.setProductName("productName");
+        tp.setControllerMO(controllerMo);
         list.add(tp);
         vpn.setAccessPointList(list);
         assertEquals("productName", ControllerUtils.getControllerType(vpn));
@@ -81,9 +81,9 @@ public class ControllerUtilsTest {
     @Test
     public void testGetControllerTypeTp() throws ServiceException {
         Tp tp = new Tp();
-        ControllerMO contollerMO = new ControllerMO();
-        contollerMO.setProductName("productName");
-        tp.setContollerMO(contollerMO);
+        ControllerMO controllerMo = new ControllerMO();
+        controllerMo.setProductName("productName");
+        tp.setControllerMO(controllerMo);
 
         assertEquals("productName", ControllerUtils.getControllerType(tp));
     }
@@ -117,9 +117,9 @@ public class ControllerUtilsTest {
         Vpn vpn = new Vpn();
         List<Tp> list = new ArrayList<>();
         Tp tp = new Tp();
-        ControllerMO contollerMO = new ControllerMO();
-        contollerMO.setProductName("productName");
-        tp.setContollerMO(contollerMO);
+        ControllerMO controllerMo = new ControllerMO();
+        controllerMo.setProductName("productName");
+        tp.setControllerMO(controllerMo);
         list.add(tp);
         vpn.setAccessPointList(list);
         assertNull(ControllerUtils.getControllerUUID(vpn));
@@ -134,9 +134,9 @@ public class ControllerUtilsTest {
     @Test
     public void testGetControllerUUIDTp() throws ServiceException {
         Tp tp = new Tp();
-        ControllerMO contollerMO = new ControllerMO();
-        contollerMO.setObjectId("objectId");
-        tp.setContollerMO(contollerMO);
+        ControllerMO controllerMo = new ControllerMO();
+        controllerMo.setObjectId("objectId");
+        tp.setControllerMO(controllerMo);
 
         assertEquals("objectId", ControllerUtils.getControllerUUID(tp));
     }
