@@ -19,11 +19,11 @@
     xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:ctx="http://www.springframework.org/schema/context" xmlns:context="http://www.springframework.org/schema/context"
 
     xsi:schemaLocation="
-	http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd
-	http://cxf.apache.org/jaxrs 
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://cxf.apache.org/jaxrs
     http://cxf.apache.org/schemas/jaxrs.xsd">
 
     <context:annotation-config />
@@ -39,6 +39,7 @@
         <!-- registering beans -->
         <jaxrs:serviceBeans>
             <ref bean="l2VpnServiceResource"></ref>
+            <ref bean="SwaggerRoa"></ref>
         </jaxrs:serviceBeans>
         <!-- registering providers -->
         <jaxrs:providers>
@@ -49,7 +50,8 @@
     <bean id="l2VpnServiceResource" class="org.openo.sdno.l2vpnservice.resource.L2VpnServiceResource">
         <property name="service" ref="l2vpnService" />
     </bean>
-
+    <bean id="SwaggerRoa" class="org.openo.sdno.l2vpnservice.resource.SwaggerRoa">
+    </bean>
     <bean id="l2vpnService" class="org.openo.sdno.l2vpnservice.service.impl.L2vpnServiceImpl">
         <property name="l2VpnCreateService" ref="l2vpnCreateService" />
         <property name="l2VpnDeleteService" ref="l2vpnDeleteService" />
