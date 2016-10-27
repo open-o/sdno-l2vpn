@@ -90,7 +90,6 @@ public class L2VpnCreateServiceImpl implements L2VpnCreateService {
 
         deploy(vpn, l2vpn);
         save(vpn, l2vpn);
-        refreshSubInterfaceName(vpn, request);
         return vpn;
     }
 
@@ -102,14 +101,6 @@ public class L2VpnCreateServiceImpl implements L2VpnCreateService {
         String controllerUuid = ControllerUtils.getControllerUUID(vpn);
 
         sendPostRequest(vpn, l2Vpn, controllerUuid);
-    }
-
-    private void refreshSubInterfaceName(Vpn vpn, @Context HttpServletRequest request) throws ServiceException {
-        try {
-            l2VpnQueryService.getStatus(vpn, request);
-        } catch(ServiceException e) {
-            LOGGER.error("DefaultL2VpnCreateServiceImpl::setVpnTpName::query vpn status error", e);
-        }
     }
 
     private L2Vpn sendPostRequest(Vpn vpn, L2Vpn l2Vpn, String controllerUuid) throws ServiceException {
