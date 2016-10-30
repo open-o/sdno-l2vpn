@@ -28,6 +28,7 @@ import org.openo.sdno.l2vpnservice.common.L2VpnSvcErrorCode;
 import org.openo.sdno.l2vpnservice.service.inf.SbiApiService;
 import org.openo.sdno.model.uniformsbi.l2vpn.L2Vpn;
 import org.openo.sdno.wanvpn.inventory.sdk.common.OwnerInfoThreadLocal;
+import org.openo.sdno.wanvpn.util.TranslateChecker;
 import org.openo.sdno.wanvpn.util.URLEncoderUtil;
 import org.openo.sdno.wanvpn.util.rest.RestUtil;
 import org.slf4j.Logger;
@@ -70,7 +71,9 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
     public L2Vpn provision(final String controllerId, final L2Vpn vpn) throws ServiceException {
         final Map<String, Object> paras = new HashMap<String, Object>();
         paras.put("l2vpnVpws", vpn);
-        LOGGER.info("l2vpn is :" + JsonUtil.toJson(paras));
+        String reqJson = JsonUtil.toJson(paras);
+        reqJson = TranslateChecker.check(reqJson);
+        LOGGER.info("l2vpn is :" + reqJson);
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
         restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
@@ -85,7 +88,10 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
     public L2Vpn modifyDesc(final String controllerId, final L2Vpn vpn) throws ServiceException {
         final Map<String, Object> paras = new HashMap<String, Object>();
         paras.put("l2vpnVpws", vpn);
-        LOGGER.info("l2vpn is :" + JsonUtil.toJson(paras));
+
+        String reqJson = JsonUtil.toJson(paras);
+        reqJson = TranslateChecker.check(reqJson);
+        LOGGER.info("l2vpn is :" + reqJson);
 
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
         restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
