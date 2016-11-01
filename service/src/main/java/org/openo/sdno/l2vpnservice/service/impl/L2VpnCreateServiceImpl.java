@@ -25,6 +25,7 @@ import javax.ws.rs.core.Context;
 
 import org.openo.baseservice.remoteservice.exception.ServiceException;
 import org.openo.sdno.framework.container.util.JsonUtil;
+import org.openo.sdno.framework.container.util.UuidUtils;
 import org.openo.sdno.l2vpnservice.common.ControllerUtils;
 import org.openo.sdno.l2vpnservice.common.L2VpnSvcErrorCode;
 import org.openo.sdno.l2vpnservice.dao.L2VpnDao;
@@ -49,6 +50,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
  * l2vpn create service.<br>
@@ -82,6 +84,14 @@ public class L2VpnCreateServiceImpl implements L2VpnCreateService {
 
     @Override
     public Vpn create(final VpnVo vpnVo, @Context HttpServletRequest request) throws ServiceException {
+        if(!StringUtils.hasLength(vpnVo.getVpn().getUuid())) {
+            vpnVo.getVpn().setUuid(UuidUtils.createUuid());
+        }
+
+        for(Tp tp : vpnVo.getVpn().getAccessPointList()) {
+            tp.setUuid(UuidUtils.createUuid());
+        }
+
         checkVpnPara(vpnVo);
 
         L2Vpn l2vpn = translate(vpnVo, request);
