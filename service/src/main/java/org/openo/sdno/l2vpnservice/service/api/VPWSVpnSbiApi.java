@@ -79,9 +79,15 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
 
         final RestfulResponse response = RestUtil.sendPostRequest(getProvisionUrl(), restfulParametes,
                 OwnerInfoThreadLocal.getHttpServletRequest());
-        handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.CREATE_CONTROLLER_FAIL);
+        if(response.getStatus() / 100 != 2) {
+            throw new ServiceException("Create L2VPN failed with status : " + response.getStatus());
 
-        return L2VpnSbiApi.getVpnFromResponse(response);
+        }
+        // handleResponse(responsTranslator.tranlate(response),
+        // L2VpnSvcErrorCode.CREATE_CONTROLLER_FAIL);
+        //
+        // return L2VpnSbiApi.getVpnFromResponse(response);
+        return vpn;
     }
 
     @Override
