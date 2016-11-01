@@ -17,7 +17,9 @@
 package org.openo.sdno.l2vpnservice.service.impl;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +35,15 @@ import org.openo.sdno.l2vpnservice.dao.L2VpnTpDao;
 import org.openo.sdno.l2vpnservice.service.inf.L2VpnCreateService;
 import org.openo.sdno.l2vpnservice.service.inf.L2VpnQueryService;
 import org.openo.sdno.l2vpnservice.service.provider.SbiApiServiceProvider;
+import org.openo.sdno.model.servicemodel.brs.NetworkElementMO;
 import org.openo.sdno.model.servicemodel.common.enumeration.TopologyType;
 import org.openo.sdno.model.servicemodel.tp.Tp;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
 import org.openo.sdno.model.servicemodel.vpn.VpnBasicInfo;
 import org.openo.sdno.model.servicemodel.vpn.VpnVo;
 import org.openo.sdno.model.uniformsbi.l2vpn.L2Vpn;
+import org.openo.sdno.result.Result;
+import org.openo.sdno.wanvpn.inventory.sdk.util.InventoryProxy;
 import org.openo.sdno.wanvpn.translator.common.OperType;
 import org.openo.sdno.wanvpn.translator.common.VpnContextKeys;
 import org.openo.sdno.wanvpn.translator.inf.TranslatorCtx;
@@ -84,18 +89,32 @@ public class L2VpnCreateServiceImpl implements L2VpnCreateService {
 
     @Override
     public Vpn create(final VpnVo vpnVo, @Context HttpServletRequest request) throws ServiceException {
+        Map<String, String> neMap = new HashMap<String, String>();
         if(!StringUtils.hasLength(vpnVo.getVpn().getUuid())) {
             vpnVo.getVpn().setUuid(UuidUtils.createUuid());
         }
 
         for(Tp tp : vpnVo.getVpn().getAccessPointList()) {
             tp.setUuid(UuidUtils.createUuid());
+            neMap.put(tp.getUuid(), tp.getNeId());
+
+            final Result<NetworkElementMO> rsp = InventoryProxy.queryNeById(tp.getNeId());
+            if(null == rsp || rsp.isFailed() || null == rsp.getResultObj()) {
+                LOGGER.error("Create l2vpn failure as queryNEById is null.");
+                throw new ServiceException("Create l2vpn failure as queryNEById is null");
+            }
+            tp.setNeId(rsp.getResultObj().getNativeID());
         }
 
         checkVpnPara(vpnVo);
 
         L2Vpn l2vpn = translate(vpnVo, request);
         LOGGER.warn("l2vpn is : " + JsonUtil.toJson(l2vpn));
+
+        for(Tp tp : vpnVo.getVpn().getAccessPointList()) {
+            tp.setNeId(neMap.get(tp.getUuid()));
+        }
+
         final Vpn vpn = vpnVo.getVpn();
 
         deploy(vpn, l2vpn);
