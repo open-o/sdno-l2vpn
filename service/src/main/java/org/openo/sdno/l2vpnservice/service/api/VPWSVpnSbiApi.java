@@ -73,7 +73,7 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
         paras.put("l2vpnVpws", vpn);
         String reqJson = JsonUtil.toJson(paras);
         reqJson = TranslateChecker.check(reqJson);
-        LOGGER.info("l2vpn is :" + reqJson);
+        LOGGER.info("Create l2vpn request is :" + reqJson);
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
         restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
@@ -91,14 +91,14 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
 
         String reqJson = JsonUtil.toJson(paras);
         reqJson = TranslateChecker.check(reqJson);
-        LOGGER.info("l2vpn is :" + reqJson);
+        LOGGER.info("Modify l2vpn request is :" + reqJson);
 
         final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(paras));
         restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
-        final RestfulResponse response =
-                RestUtil.sendPutRequest(MessageFormat.format(getModifyDescUrl(), URLEncoderUtil.encode(vpn.getUuid())),
-                        restfulParametes, OwnerInfoThreadLocal.getHttpServletRequest());
+        final RestfulResponse response = RestUtil.sendPutRequest(
+                MessageFormat.format(getModifyDescUrl(), URLEncoderUtil.encode(vpn.getUuid())), restfulParametes,
+                OwnerInfoThreadLocal.getHttpServletRequest());
         handleResponse(responsTranslator.tranlate(response), L2VpnSvcErrorCode.UPDATEDESC_CONTROLLER_FAIL);
         return L2VpnSbiApi.getVpnFromResponse(response);
     }
