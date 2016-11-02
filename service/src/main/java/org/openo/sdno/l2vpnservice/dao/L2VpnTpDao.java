@@ -34,6 +34,8 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractTpDao;
 import org.openo.sdno.wanvpn.dao.vpn.AbstractTpTypeSpecDao;
 import org.openo.sdno.wanvpn.dao.vpn.TpDaoHelper;
 import org.openo.sdno.wanvpn.util.vpn.VpnModelAccessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
@@ -46,6 +48,8 @@ import org.springframework.util.CollectionUtils;
  */
 @Repository("l2VpnTpDao")
 public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2VpnTpDao.class);
 
     @Autowired
     protected AbstractTpTypeSpecDao tpTypeSpecDao;
@@ -144,7 +148,14 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
 
         final List<String> tpIds = DaoUtil.getPoModelUuids(pos);
 
+        LOGGER.info("Get CeTp use tpIds: " + tpIds.size());
+
+        for(String tpId : tpIds) {
+            LOGGER.info("Get CeTp use tpIds: id -- " + tpId);
+        }
+
         final Map<String, CeTp> ceTpMap = tpDaoHelper.getCeTpMap(ceTpIds);
+
         final Map<String, List<TpTypeSpec>> tpTypeSpecMap = tpDaoHelper.getTpTypeSpecMap(tpIds);
 
         final List<Tp> tps = new ArrayList<>(pos.size());
