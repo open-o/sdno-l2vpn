@@ -74,7 +74,7 @@ public class VPWSVpnSbiApi extends L2VpnSbiApi implements SbiApiService {
         String reqJson = JsonUtil.toJson(paras);
         reqJson = TranslateChecker.check(reqJson);
         LOGGER.info("Create l2vpn request is :" + reqJson);
-        final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(JsonUtil.toJson(reqJson));
+        final RestfulParametes restfulParametes = RestUtil.getRestfulParametes(reqJson);
         restfulParametes.putHttpContextHeader("X-Driver-Parameter", "extSysID=" + URLEncoderUtil.encode(controllerId));
 
         final RestfulResponse response = RestUtil.sendPostRequest(getProvisionUrl(), restfulParametes,
