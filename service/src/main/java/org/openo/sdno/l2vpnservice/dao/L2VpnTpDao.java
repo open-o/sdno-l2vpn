@@ -34,6 +34,8 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractTpDao;
 import org.openo.sdno.wanvpn.dao.vpn.AbstractTpTypeSpecDao;
 import org.openo.sdno.wanvpn.dao.vpn.TpDaoHelper;
 import org.openo.sdno.wanvpn.util.vpn.VpnModelAccessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
@@ -42,10 +44,12 @@ import org.springframework.util.CollectionUtils;
  * L2VPN TP data access object class.<br>
  * 
  * @author
- * @version SDNO 0.5 Aug 2, 2016
+ * @version SDNO 0.5 August 2, 2016
  */
 @Repository("l2VpnTpDao")
 public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2VpnTpDao.class);
 
     @Autowired
     protected AbstractTpTypeSpecDao tpTypeSpecDao;
@@ -64,14 +68,17 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
     private static final String DEFAULT_FILTER =
             "inboundQosPolicyId in (:inboundQosPolicyId) or outboundQosPolicyId in (:outboundQosPolicyId)";
 
+    @Override
     public void setTpTypeSpecDao(final AbstractTpTypeSpecDao tpTypeSpecDao) {
         this.tpTypeSpecDao = tpTypeSpecDao;
     }
 
+    @Override
     public void setCeTpDao(final AbstractCeTpDao ceTpDao) {
         this.ceTpDao = ceTpDao;
     }
 
+    @Override
     public void setTpDaoHelper(final TpDaoHelper tpDaoHelper) {
         this.tpDaoHelper = tpDaoHelper;
     }
@@ -100,6 +107,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
      * @throws ServiceException when query failed
      * @since SDNO 0.5
      */
+    @Override
     public List<L2VpnTpPo> queryTpByQosID(List<String> qosID) throws ServiceException {
         BatchQueryParams batchQueryParams = new BatchQueryParams();
         batchQueryParams.addBusinessParam("inboundQosPolicyId", qosID);
@@ -117,12 +125,15 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
             return true;
         }
 
-        final List<CeTp> ceTps = VpnModelAccessor.getCeTps(mos);
+        // final List<CeTp> ceTps = VpnModelAccessor.getCeTps(mos);
         final List<TpTypeSpec> tpTypeSpecs = VpnModelAccessor.getTpTypeSpecs(mos);
         final List<String> tpIds = DaoUtil.getUuids(mos);
 
-        boolean result = ceTpDao.delMos(ceTps);
-        result &= tpTypeSpecDao.delMos(tpTypeSpecs);
+        // boolean result = ceTpDao.delMos(ceTps);
+        // result &= tpTypeSpecDao.delMos(tpTypeSpecs);
+        // result &= delete(tpIds);
+
+        boolean result = tpTypeSpecDao.delMos(tpTypeSpecs);
         result &= delete(tpIds);
 
         return result;
@@ -140,11 +151,18 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
     @Override
     public List<Tp> assembleMo(final List<L2VpnTpPo> pos) throws ServiceException {
 
-        final List<String> ceTpIds = getCeTpIds(pos);
+        // final List<String> ceTpIds = getCeTpIds(pos);
 
         final List<String> tpIds = DaoUtil.getPoModelUuids(pos);
 
-        final Map<String, CeTp> ceTpMap = tpDaoHelper.getCeTpMap(ceTpIds);
+        LOGGER.info("Get CeTp use tpIds: " + tpIds.size());
+
+        for(String tpId : tpIds) {
+            LOGGER.info("Get CeTp use tpIds: id -- " + tpId);
+        }
+
+        // final Map<String, CeTp> ceTpMap = tpDaoHelper.getCeTpMap(ceTpIds);
+
         final Map<String, List<TpTypeSpec>> tpTypeSpecMap = tpDaoHelper.getTpTypeSpecMap(tpIds);
 
         final List<Tp> tps = new ArrayList<>(pos.size());
@@ -152,7 +170,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
             final Tp tp = tpPo.toSvcModel();
             tps.add(tp);
 
-            setPeerCeTp(tp, ceTpMap.get(tpPo.getPeerCeTpId()));
+            // setPeerCeTp(tp, ceTpMap.get(tpPo.getPeerCeTpId()));
             if(tpTypeSpecMap != null) {
                 setTypeSpecList(tp, tpTypeSpecMap.get(tp.getUuid()));
             }
@@ -168,26 +186,27 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
      * @throws ServiceException when operate failed
      * @since SDNO 0.5
      */
+    @Override
     public List<Tp> assembleBriefMo(final List<L2VpnTpPo> pos) throws ServiceException {
-        final List<String> ceTpIds = getCeTpIds(pos);
-
-        final Map<String, CeTp> ceTpMap = tpDaoHelper.getCeTpMap(ceTpIds);
+        // final List<String> ceTpIds = getCeTpIds(pos);
+        //
+        // final Map<String, CeTp> ceTpMap = tpDaoHelper.getCeTpMap(ceTpIds);
         final List<Tp> tps = new ArrayList<>(pos.size());
         for(final L2VpnTpPo tpPo : pos) {
             final Tp tp = tpPo.toSvcModel();
             tps.add(tp);
-            setPeerCeTp(tp, ceTpMap.get(tpPo.getPeerCeTpId()));
+            // setPeerCeTp(tp, ceTpMap.get(tpPo.getPeerCeTpId()));
         }
         return tps;
     }
 
-    private List<String> getCeTpIds(final List<L2VpnTpPo> pos) {
-        final List<String> ceTpIds = new ArrayList<>(pos.size() * 2);
-        for(final L2VpnTpPo po : pos) {
-            ceTpIds.add(po.getPeerCeTpId());
-        }
-        return ceTpIds;
-    }
+    // private List<String> getCeTpIds(final List<L2VpnTpPo> pos) {
+    // final List<String> ceTpIds = new ArrayList<>(pos.size() * 2);
+    // for(final L2VpnTpPo po : pos) {
+    // ceTpIds.add(po.getPeerCeTpId());
+    // }
+    // return ceTpIds;
+    // }
 
     private List<String> getTpCarIds(final List<L2VpnTpPo> tpPos) {
         final List<String> tpCarIds = new ArrayList<>(tpPos.size() * 2);
@@ -217,14 +236,15 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
      * @throws ServiceException when update failed.
      * @since SDNO 0.5
      */
+    @Override
     public void updateStatus(final List<Tp> tps) throws ServiceException {
         update(DaoUtil.batchMoConvert(tps, getPoClass()));
     }
 
     /**
-     * get the po object class.<br>
+     * get the PO object class.<br>
      * 
-     * @return class of the po object.
+     * @return class of the PO object.
      * @since SDNO 0.5
      */
     @Override
