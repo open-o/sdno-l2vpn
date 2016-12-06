@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openo.baseservice.remoteservice.exception.ServiceException;
+import org.openo.sdno.model.common.ModelUtil;
 import org.openo.sdno.model.db.uniformsbi.l2vpn.L2VpnAcSbiPo;
 import org.openo.sdno.model.db.uniformsbi.l2vpn.L2VpnSbiPo;
 import org.openo.sdno.model.uniformsbi.l2vpn.L2Ac;
@@ -30,7 +31,6 @@ import org.openo.sdno.model.uniformsbi.l2vpn.L2Acs;
 import org.openo.sdno.model.uniformsbi.l2vpn.L2Vpn;
 import org.openo.sdno.wanvpn.dao.DaoUtil;
 import org.openo.sdno.wanvpn.dao.DefaultDao;
-import org.openo.sdno.wanvpn.util.ModelUtil;
 import org.openo.sdno.wanvpn.util.constant.VpnConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * L2VPN SBI data access object class.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 8, 2016
  */

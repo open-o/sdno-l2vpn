@@ -49,7 +49,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * L2vpn query service implement.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 9, 2016
  */
@@ -95,7 +95,7 @@ public class L2VpnQueryServiceImpl implements L2VpnQueryService {
     @Override
     public boolean isVpnActive(final Vpn vpn, final String controllerId) throws ServiceException {
         if(Objects.equals(vpn.getVpnBasicInfo().getAdminStatus(),
-                org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.ACTIVE.getCommonName())) {
+                org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.ACTIVE.getAlias())) {
             final L2Vpn l2Vpn = sbiApiServiceProvider.getService(vpn).getDetail(controllerId, vpn.getId());
             return Objects.equals(l2Vpn.getAdminStatus(), AdminStatus.ADMIN_UP);
         }
@@ -126,13 +126,13 @@ public class L2VpnQueryServiceImpl implements L2VpnQueryService {
     private void refreshVpnAdminStatus(final Vpn vpn, final L2Vpn l2Vpn) {
         final AdminStatus adminStatus = l2Vpn.getAdminStatus();
         if(adminStatus == null) {
-            vpn.getVpnBasicInfo().setAdminStatus(INACTIVE.getCommonName());
+            vpn.getVpnBasicInfo().setAdminStatus(INACTIVE.getAlias());
             return;
         }
         if(adminStatus.equals(AdminStatus.ADMIN_UP)) {
-            vpn.getVpnBasicInfo().setAdminStatus(ACTIVE.getCommonName());
+            vpn.getVpnBasicInfo().setAdminStatus(ACTIVE.getAlias());
         } else {
-            vpn.getVpnBasicInfo().setAdminStatus(INACTIVE.getCommonName());
+            vpn.getVpnBasicInfo().setAdminStatus(INACTIVE.getAlias());
         }
     }
 
@@ -140,39 +140,39 @@ public class L2VpnQueryServiceImpl implements L2VpnQueryService {
         final OperStatus operStatus = l2Vpn.getOperStatus();
 
         if(operStatus == null) {
-            vpn.setOperStatus(DOWN.getCommonName());
+            vpn.setOperStatus(DOWN.getAlias());
             return;
         }
         if(operStatus.equals(OperStatus.OPERATE_UP)) {
-            vpn.setOperStatus(UP.getCommonName());
+            vpn.setOperStatus(UP.getAlias());
         } else {
-            vpn.setOperStatus(DOWN.getCommonName());
+            vpn.setOperStatus(DOWN.getAlias());
         }
     }
 
     private void refreshTpAdminStatus(final Tp tp, final L2Ac ac) {
         final AdminStatus adminStatus = ac.getAdminStatus();
         if(adminStatus == null) {
-            tp.setAdminStatus(INACTIVE.getCommonName());
+            tp.setAdminStatus(INACTIVE.getAlias());
             return;
         }
         if(adminStatus.equals(AdminStatus.ADMIN_UP)) {
-            tp.setAdminStatus(ACTIVE.getCommonName());
+            tp.setAdminStatus(ACTIVE.getAlias());
         } else {
-            tp.setAdminStatus(INACTIVE.getCommonName());
+            tp.setAdminStatus(INACTIVE.getAlias());
         }
     }
 
     private void refreshTpOperateStatus(final Tp tp, final L2Ac ac) {
         final OperStatus operStatus = ac.getOperStatus();
         if(operStatus == null) {
-            tp.setOperStatus(DOWN.getCommonName());
+            tp.setOperStatus(DOWN.getAlias());
             return;
         }
         if(operStatus.equals(OperStatus.OPERATE_UP)) {
-            tp.setOperStatus(UP.getCommonName());
+            tp.setOperStatus(UP.getAlias());
         } else {
-            tp.setOperStatus(DOWN.getCommonName());
+            tp.setOperStatus(DOWN.getAlias());
         }
 
     }

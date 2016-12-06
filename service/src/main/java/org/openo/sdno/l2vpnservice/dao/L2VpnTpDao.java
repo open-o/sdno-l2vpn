@@ -22,8 +22,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.openo.baseservice.remoteservice.exception.ServiceException;
-import org.openo.sdno.model.common.query.BatchQueryParams;
-import org.openo.sdno.model.common.query.BatchQueryResult;
+import org.openo.sdno.model.common.VpnModelAccessor;
 import org.openo.sdno.model.db.l2vpn.L2VpnTpPo;
 import org.openo.sdno.model.servicemodel.tp.CeTp;
 import org.openo.sdno.model.servicemodel.tp.Tp;
@@ -33,7 +32,8 @@ import org.openo.sdno.wanvpn.dao.vpn.AbstractCeTpDao;
 import org.openo.sdno.wanvpn.dao.vpn.AbstractTpDao;
 import org.openo.sdno.wanvpn.dao.vpn.AbstractTpTypeSpecDao;
 import org.openo.sdno.wanvpn.dao.vpn.TpDaoHelper;
-import org.openo.sdno.wanvpn.util.vpn.VpnModelAccessor;
+import org.openo.sdno.wanvpn.util.query.BatchQueryParams;
+import org.openo.sdno.wanvpn.util.query.BatchQueryResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +42,7 @@ import org.springframework.util.CollectionUtils;
 
 /**
  * L2VPN TP data access object class.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 2, 2016
  */
@@ -101,7 +101,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
 
     /**
      * Query TP table info.<br>
-     * 
+     *
      * @param qosID QOS ID
      * @return TP info
      * @throws ServiceException when query failed
@@ -180,7 +180,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
 
     /**
      * Assemble brief TP MO.<br>
-     * 
+     *
      * @param pos list of POs
      * @return list of TPs
      * @throws ServiceException when operate failed
@@ -231,7 +231,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
 
     /**
      * Update TP status.<br>
-     * 
+     *
      * @param tps list of TPs
      * @throws ServiceException when update failed.
      * @since SDNO 0.5
@@ -243,7 +243,7 @@ public class L2VpnTpDao extends AbstractTpDao<L2VpnTpPo> {
 
     /**
      * get the PO object class.<br>
-     * 
+     *
      * @return class of the PO object.
      * @since SDNO 0.5
      */

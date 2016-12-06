@@ -59,7 +59,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * L2vpn create service.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 9, 2016
  */
@@ -157,7 +157,7 @@ public class L2VpnCreateServiceImpl implements L2VpnCreateService {
         if(tps == null || basicInfo == null) {
             return;
         }
-        if(basicInfo.getTopology().equals(TopologyType.POINT_TO_POINT.getCommonName()) && 2 != tps.size()) {
+        if(basicInfo.getTopology().equals(TopologyType.POINT_TO_POINT.getAlias()) && 2 != tps.size()) {
             throw ServiceExceptionUtil.getServiceException(L2VpnSvcErrorCode.CREATE_L2VPN_NOT_TWO_SITE);
         }
     }
