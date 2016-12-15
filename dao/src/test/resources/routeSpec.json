@@ -1,0 +1,14 @@
+{
+  "uuid": null,
+  "type": "staticRouting",
+  "staticRoute": {
+    "uuid": null,
+    "destinationCidr": "11.2.2.12/24",
+    "routePreference": null,
+    "nextHopIp": "11.2.2.11/24",
+    "type": null,
+    "addtionalInfo": null
+  },
+  "bgpRoute": null,
+  "addtionalInfo": null
+}

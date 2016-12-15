@@ -1,0 +1,134 @@
+{
+	"id" : "f5bb9634-35fd-4ff0-8387-5b20f1bc9ff1",
+	"name" : "1515",
+	"description" : null,
+	"vpnBasicInfo" : {
+		"uuid" : "5bc9299f-8682-4404-8c6c-e283a996e751",
+		"topology" : "point_to_point",
+		"serviceType" : "l2vpn",
+		"technology" : "mpls",
+		"adminStatus" : "inactive",
+		"addtionalInfo" : null
+	},
+	"operStatus" : null,
+	"syncStatus" : null,
+	"accessPointList" : [{
+			"id" : "c36dcb69-4124-421b-9997-115120fd88af",
+			"name" : "Ethernet3/0/8",
+			"description" : "",
+			"adminStatus" : null,
+			"operStatus" : null,
+			"neId" : "53521966-4e98-40cb-83a1-ea70872c7b50",
+			"edgePointRole" : null,
+			"hubSpoke" : null,
+			"type" : "CTP",
+			"workingLayer" : null,
+			"typeSpecList" : [{
+					"uuid" : "9954ba0a-3655-4321-8f2d-3f19c391e958",
+					"layerRate" : null,
+					"ethernetTpSpec" : {
+						"uuid" : "222f45bd-91e1-49b3-a10c-0c9e3f894dd0",
+						"accessType" : null,
+						"vlanAction" : null,
+						"cvlanList" : null,
+						"svlanList" : "1515",
+						"mappingCvlanList" : null,
+						"mappingSvlanList" : null,
+						"addtionalInfo" : null
+					},
+					"ipTpSpec" : {
+						"uuid" : "c3293561-4e83-4b14-b9ae-bab15d936505",
+						"masterIp" : "16.1.1.1/24",
+						"addtionalInfo" : null
+					}
+				}
+			],
+			"peerCeTp" : {
+				"uuid" : "9db7bf02-f253-4bb2-a67e-c21d63bfd6a0",
+				"siteName" : "CC",
+				"ceName" : "CC",
+				"ceIfmasterIp" : "16.1.1.2/24",
+				"location" : null,
+				"addtionalInfo" : null
+			},
+			"inboundQosPolicyId" : null,
+			"outboundQosPolicyId" : null,
+			"inBoundTpCar" : {
+				"enableCar":true,
+				"cir" : 100,
+				"pir" : 200,
+				"cbs" : 100,
+				"pbs" : 200
+			},
+			"outBoundTpCar" : {
+				"enableCar":true,
+				"cir" : 1,
+				"pir" : 2,
+				"cbs" : 1,
+				"pbs" : 2
+			},
+			"routeProtocolSpecs" : null,
+			"containedMainTP" : "d7b6b69c-27ef-4ae1-aab1-da370b6f8a66",
+			"addtionalInfo" : null
+		}, {
+			"id" : "d0e5c20e-c4a1-4e1b-962b-5a776197ba06",
+			"name" : "Pos3/1/2",
+			"description" : "",
+			"adminStatus" : null,
+			"operStatus" : null,
+			"neId" : "6fb99ecc-5791-4840-a1d7-b1df56ec385f",
+			"edgePointRole" : null,
+			"hubSpoke" : null,
+			"type" : "CTP",
+			"workingLayer" : null,
+			"typeSpecList" : [{
+					"uuid" : "21765307-ec9e-41a5-8889-2975bcacee2a",
+					"layerRate" : null,
+					"ethernetTpSpec" : {
+						"uuid" : "0263ca14-aa8e-4a80-a41b-5f663b8c166c",
+						"accessType" : null,
+						"vlanAction" : null,
+						"cvlanList" : null,
+						"svlanList" : "1515",
+						"mappingCvlanList" : null,
+						"mappingSvlanList" : null,
+						"addtionalInfo" : null
+					},
+					"ipTpSpec" : {
+						"uuid" : "8817fa19-bb10-4709-bb39-97444d9513c1",
+						"masterIp" : "15.1.1.1/24",
+						"addtionalInfo" : null
+					}
+				}
+			],
+			"peerCeTp" : {
+				"uuid" : "ebd6b8d2-cb9a-4a1a-96fb-678454645d74",
+				"siteName" : "CA",
+				"ceName" : "CA",
+				"ceIfmasterIp" : "15.1.1.2/24",
+				"location" : null,
+				"addtionalInfo" : null
+			},
+			"inboundQosPolicyId" : null,
+			"outboundQosPolicyId" : null,
+			"inBoundTpCar" : {
+				"enableCar":true,
+				"cir" : 100,
+				"pir" : 200,
+				"cbs" : 100,
+				"pbs" : 200
+			},
+			"outBoundTpCar" : {
+				"enableCar":true,
+				"cir" : 1,
+				"pir" : 2,
+				"cbs" : 1,
+				"pbs" : 2
+			},
+			"routeProtocolSpecs" : null,
+			"containedMainTP" : "3891f245-e230-4f21-8eae-4d5fc1dfde9f",
+			"addtionalInfo" : null
+		}
+	],
+	"addtionalInfo" : null
+}

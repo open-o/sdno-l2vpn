@@ -1,0 +1,8 @@
+{
+  "uuid": "e9cb1fd2-72fe-4a45-aee3-2b355e5f873d",
+  "destinationCidr": "100",
+  "routePreference": "200",
+  "nextHopIp": "1.1.1.1",
+  "type": null,
+  "addtionalInfo": null
+}

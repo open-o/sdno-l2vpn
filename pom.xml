@@ -36,6 +36,10 @@
 
     <modules>
         <module>service</module>
+        <module>model</module>
+        <module>dao</module>
+        <module>inventory</module>
+        <module>translator</module>
         <module>deployment</module>
     </modules>
 

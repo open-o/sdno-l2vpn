@@ -1,0 +1,59 @@
+{
+	"id" : "c36dcb69-4124-421b-9997-115120fd88af",
+	"name" : "Ethernet3/0/8",
+	"description" : "",
+	"adminStatus" : null,
+	"operStatus" : null,
+	"neId" : "53521966-4e98-40cb-83a1-ea70872c7b50",
+	"edgePointRole" : null,
+	"hubSpoke" : null,
+	"type" : "CTP",
+	"workingLayer" : null,
+	"typeSpecList" : [{
+			"uuid" : "9954ba0a-3655-4321-8f2d-3f19c391e958",
+			"layerRate" : null,
+			"ethernetTpSpec" : {
+				"uuid" : "222f45bd-91e1-49b3-a10c-0c9e3f894dd0",
+				"accessType" : null,
+				"vlanAction" : null,
+				"cvlanList" : null,
+				"svlanList" : "1515",
+				"mappingCvlanList" : null,
+				"mappingSvlanList" : null,
+				"addtionalInfo" : null
+			},
+			"ipTpSpec" : {
+				"uuid" : "c3293561-4e83-4b14-b9ae-bab15d936505",
+				"masterIp" : "16.1.1.1/24",
+				"addtionalInfo" : null
+			}
+		}
+	],
+	"peerCeTp" : {
+		"uuid" : "9db7bf02-f253-4bb2-a67e-c21d63bfd6a0",
+		"siteName" : "CC",
+		"ceName" : "CC",
+		"ceIfmasterIp" : "16.1.1.2/24",
+		"location" : null,
+		"addtionalInfo" : null
+	},
+	"inboundQosPolicyId" : null,
+	"outboundQosPolicyId" : null,
+	"inBoundTpCar" : {
+	    "enableCar":true,
+		"cir" : 100,
+		"pir" : 200,
+		"cbs" : 100,
+		"pbs" : 200
+	},
+	"outBoundTpCar" : {
+	    "enableCar":true,
+		"cir" : 1,
+		"pir" : 2,
+		"cbs" : 1,
+		"pbs" : 2
+	},
+	"routeProtocolSpecs" : null,
+	"containedMainTP" : "d7b6b69c-27ef-4ae1-aab1-da370b6f8a66",
+	"addtionalInfo" : null
+}
