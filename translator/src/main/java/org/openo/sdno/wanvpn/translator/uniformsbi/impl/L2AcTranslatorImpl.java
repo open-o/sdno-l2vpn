@@ -42,7 +42,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * The implement class of the L2 AC translator.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 1, 2016
  */
@@ -133,11 +133,11 @@ public class L2AcTranslatorImpl implements L2AcTranslator {
         }
 
         final String accessType = ethernetTpSpec.getAccessType();
-        l2Access.setL2AccessType(TranslatorUtil.s2nL2AccessType(accessType).getName());
+        l2Access.setL2AccessType(TranslatorUtil.s2nL2AccessType(accessType).getAlias());
 
         l2Access.setAccessAction(Enum.valueOf(AccessAction.class, ethernetTpSpec.getActionValue()));
 
-        if(Objects.equals(l2Access.getL2AccessType(), L2AccessType.DOT1Q.getName())) {
+        if(Objects.equals(l2Access.getL2AccessType(), L2AccessType.DOT1Q.getAlias())) {
             l2Access.setDot1qVlanBitmap(new Integer(ethernetTpSpec.getDot1qVlanList()));
         }
 

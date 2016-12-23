@@ -17,40 +17,42 @@
 package org.openo.sdno.model.uniformsbi.comnontypes.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
 
 /**
  * The enumeration class of admin status.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
-public enum AdminStatus {
+public enum AdminStatus implements ModelEnum {
+
     ADMIN_UP("adminUp"), ADMIN_DOWN("adminDown");
 
-    private String name;
+    private String alias;
 
-    AdminStatus(String name) {
-        this.name = name;
+    private AdminStatus(String alias) {
+        this.alias = alias;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String getAlias() {
+        return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
     }
 
     /**
-     * Create AdminStatus by name.<br>
-     * 
-     * @param name status name
-     * @return AdminStatus Object
+     * @param name Can be name or alias.
+     * @return Enumeration instance
      * @since SDNO 0.5
      */
     @JsonCreator
     public static AdminStatus fromName(String name) {
-        if(ADMIN_UP.getName().equals(name)) {
-            return ADMIN_UP;
-        } else if(ADMIN_DOWN.getName().equals(name)) {
-            return ADMIN_DOWN;
-        }
-        return ADMIN_DOWN;
+        return EnumUtil.valueOf(AdminStatus.class, name);
     }
 }

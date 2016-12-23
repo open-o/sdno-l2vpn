@@ -18,7 +18,7 @@ package org.openo.sdno.model.uniformsbi.base;
 
 import org.openo.sdno.model.servicemodel.AbstractSvcModel;
 import org.openo.sdno.model.uniformsbi.comnontypes.enums.ProtectionMode;
-import org.openo.sdno.model.uniformsbi.comnontypes.enums.ReRouteMode;
+import org.openo.sdno.model.uniformsbi.comnontypes.enums.RerouteMode;
 import org.openo.sdno.model.uniformsbi.comnontypes.enums.SelectMode;
 import org.openo.sdno.model.uniformsbi.comnontypes.enums.SignalType;
 
@@ -38,7 +38,7 @@ public class TunnelPolicy extends AbstractSvcModel {
 
     private ProtectionMode protectionMode;
 
-    private ReRouteMode reRouteMode;
+    private RerouteMode reRouteMode;
 
     private int reRouteDelay;
 
@@ -86,11 +86,11 @@ public class TunnelPolicy extends AbstractSvcModel {
         this.protectionMode = protectionMode;
     }
 
-    public ReRouteMode getReRouteMode() {
+    public RerouteMode getReRouteMode() {
         return reRouteMode;
     }
 
-    public void setReRouteMode(final ReRouteMode reRouteMode) {
+    public void setReRouteMode(final RerouteMode reRouteMode) {
         this.reRouteMode = reRouteMode;
     }
 

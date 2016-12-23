@@ -17,40 +17,41 @@
 package org.openo.sdno.model.uniformsbi.comnontypes.enums;
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
 
 /**
  * The enumeration class of operation class.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
-public enum OperStatus {
+public enum OperStatus implements ModelEnum {
     OPERATE_UP("operateUp"), OPERATE_DOWN("operateDown"), PARTIAL_UP("partialUp");
 
-    private String name;
+    private String alias;
 
-    private OperStatus(String name) {
-        this.name = name;
+    private OperStatus(String alias) {
+        this.alias = alias;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String getAlias() {
+        return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
     }
 
     /**
-     * Create OperStatus by name.<br>
-     * 
-     * @param name status name
-     * @return OperStatus Object
+     * @param name Can be name or alias.
+     * @return Enumeration instance
      * @since SDNO 0.5
      */
     @JsonCreator
     public static OperStatus fromName(String name) {
-        if(OPERATE_UP.getName().equals(name)) {
-            return OPERATE_UP;
-        } else if(OPERATE_DOWN.getName().equals(name)) {
-            return OPERATE_DOWN;
-        }
-        return OPERATE_DOWN;
+        return EnumUtil.valueOf(OperStatus.class, name);
     }
 }

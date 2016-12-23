@@ -16,22 +16,44 @@
 
 package org.openo.sdno.model.uniformsbi.comnontypes.enums;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
+
 /**
  * The enumeration class of access action.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
-public enum AccessAction {
+public enum AccessAction implements ModelEnum {
+
     KEEP("keep"), PUSH("push"), POP("pop"), SWAP("swap");
 
-    private String name;
+    private String alias;
 
-    private AccessAction(String name) {
-        this.name = name;
+    private AccessAction(String alias) {
+        this.alias = alias;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String getAlias() {
+        return alias;
     }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static AccessAction fromName(String name) {
+        return EnumUtil.valueOf(AccessAction.class, name);
+    }
+
 }

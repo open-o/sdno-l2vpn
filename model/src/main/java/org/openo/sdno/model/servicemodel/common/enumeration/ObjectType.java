@@ -16,6 +16,8 @@
 
 package org.openo.sdno.model.servicemodel.common.enumeration;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
 import org.openo.sdno.wanvpn.util.ModelEnum;
 
 /**
@@ -32,16 +34,31 @@ public enum ObjectType implements ModelEnum {
 
     /**
      * Constructor<br>
-     * 
+     *
      * @param alias Name used in serialization.
      * @since SDNO 0.5
      */
-    ObjectType(String alias) {
+    private ObjectType(String alias) {
         this.alias = alias;
     }
 
     @Override
     public String getAlias() {
         return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static ObjectType fromName(String name) {
+        return EnumUtil.valueOf(ObjectType.class, name);
     }
 }

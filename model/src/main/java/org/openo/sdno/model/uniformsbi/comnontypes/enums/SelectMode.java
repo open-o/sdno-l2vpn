@@ -16,22 +16,43 @@
 
 package org.openo.sdno.model.uniformsbi.comnontypes.enums;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
+
 /**
  * The enumeration class of select mode.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
-public enum SelectMode {
+public enum SelectMode implements ModelEnum {
+
     AUTO("auto"), MANUAL("manual");
 
-    private String name;
+    private String alias;
 
-    SelectMode(final String name) {
-        this.name = name;
+    private SelectMode(String alias) {
+        this.alias = alias;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String getAlias() {
+        return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static SelectMode fromName(String name) {
+        return EnumUtil.valueOf(SelectMode.class, name);
     }
 }

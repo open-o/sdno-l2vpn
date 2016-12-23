@@ -16,22 +16,45 @@
 
 package org.openo.sdno.model.servicemodel.common.enumeration;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
+
 /**
  * <br>
  *
  * @author zhaozhongchao@huawei.com
  * @version SDNO 0.5 Dec 15, 2016
  */
-public enum Role {
+public enum Role implements ModelEnum {
 
     MASTER("master"), BACK_UP("backup");
 
     private String alias;
 
-    Role(String alias) {
-
+    private Role(String alias) {
         this.alias = alias;
+    }
 
+    @Override
+    public String getAlias() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static Role fromName(String name) {
+        return EnumUtil.valueOf(Role.class, name);
     }
 
 }

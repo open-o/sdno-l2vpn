@@ -16,22 +16,43 @@
 
 package org.openo.sdno.model.uniformsbi.comnontypes.enums;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
+import org.openo.sdno.wanvpn.util.ModelEnum;
+
 /**
  * The enumeration class of protection role.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
-public enum ProtectionRole {
+public enum ProtectionRole implements ModelEnum {
+
     PRIMARY("primary"), BACKUP("backup");
 
-    private String name;
+    private String alias;
 
-    ProtectionRole(final String name) {
-        this.name = name;
+    private ProtectionRole(String alias) {
+        this.alias = alias;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String getAlias() {
+        return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static ProtectionRole fromName(String name) {
+        return EnumUtil.valueOf(ProtectionRole.class, name);
     }
 }

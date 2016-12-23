@@ -45,7 +45,7 @@ public class L3TunnelServiceTranslatorImpl implements L3TunnelServiceTranslator 
         Object tunnelSchemaObject = ctx.getVal(VpnContextKeys.TUNNEL_SCHEMA);
         if(tunnelSchemaObject != null) {
             TunnelSchema tunnelSchema = (TunnelSchema)tunnelSchemaObject;
-            tunnelService.setType(TunnelSelectType.MPLS_TE.getName());
+            tunnelService.setType(TunnelSelectType.MPLS_TE.getAlias());
             tunnelService.setMplsTe(this.getMplsTe(tunnelSchema));
         }
 

@@ -16,11 +16,13 @@
 
 package org.openo.sdno.model.servicemodel.common.enumeration;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.openo.sdno.wanvpn.util.EnumUtil;
 import org.openo.sdno.wanvpn.util.ModelEnum;
 
 /**
  * The enumeration class of VLAN action type.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 2016-6-6
  */
@@ -30,12 +32,27 @@ public enum VlanActionType implements ModelEnum {
 
     private String alias;
 
-    VlanActionType(String alias) {
+    private VlanActionType(String alias) {
         this.alias = alias;
     }
 
     @Override
     public String getAlias() {
         return alias;
+    }
+
+    @Override
+    public String toString() {
+        return alias;
+    }
+
+    /**
+     * @param name Can be name or alias.
+     * @return Enumeration instance
+     * @since SDNO 0.5
+     */
+    @JsonCreator
+    public static VlanActionType fromName(String name) {
+        return EnumUtil.valueOf(VlanActionType.class, name);
     }
 }

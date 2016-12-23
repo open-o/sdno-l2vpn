@@ -29,7 +29,7 @@ import org.openo.sdno.wanvpn.util.EnumUtil;
 
 /**
  * Translator Utility class.<br>
- * 
+ *
  * @author
  * @version SDNO 0.5 August 2, 2016
  */
@@ -40,7 +40,7 @@ public class TranslatorUtil {
 
     /**
      * Translate admin status from service model to standard model.<br>
-     * 
+     *
      * @param status The string object of admin status
      * @return DOWN's common name when admin status is null or not active UP's
      *         common name when admin status is active
@@ -57,7 +57,7 @@ public class TranslatorUtil {
 
     /**
      * Translate L2 access type.<br>
-     * 
+     *
      * @param accessType The string object of access type
      * @return translation result, default value is DOT1Q
      * @since SDNO 0.5
@@ -75,18 +75,18 @@ public class TranslatorUtil {
 
     /**
      * Translate L2 access type.<br>
-     * 
+     *
      * @param accessType The string object of access type
      * @return translation result, default value is DOT1Q
      * @since SDNO 0.5
      */
     public static EncapType n2sL2AccessType(final String accessType) {
         EncapType l2AccessType = EncapType.DOT1Q;
-        if(Objects.equals(L2AccessType.QINQ.getName(), accessType)) {
+        if(Objects.equals(L2AccessType.QINQ.getAlias(), accessType)) {
             l2AccessType = EncapType.DOT1Q;
-        } else if(Objects.equals(L2AccessType.PORT.getName(), accessType)) {
+        } else if(Objects.equals(L2AccessType.PORT.getAlias(), accessType)) {
             l2AccessType = EncapType.UNTAG;
-        } else if(Objects.equals(L2AccessType.QINQ.getName(), accessType)) {
+        } else if(Objects.equals(L2AccessType.QINQ.getAlias(), accessType)) {
             l2AccessType = EncapType.QINQ;
         }
         return l2AccessType;
@@ -94,38 +94,38 @@ public class TranslatorUtil {
 
     /**
      * Translate topology type.<br>
-     * 
+     *
      * @param topo The string object of topology type
      * @return translation result
      * @since SDNO 0.5
      */
     public static TopologyType s2nTopologyType(final String topo) {
-        final org.openo.sdno.model.servicemodel.common.enumeration.TopologyType topologyType = EnumUtil
-                .valueOf(org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.class, topo);
+        final org.openo.sdno.model.servicemodel.common.enumeration.TopologyType topologyType =
+                EnumUtil.valueOf(org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.class, topo);
 
         switch(topologyType) {
-        case FULL_MESH: {
-            return TopologyType.FULL_MESH;
-        }
-        case POINT_TO_MULTIPOINT: {
-            return TopologyType.POINT_TO_MULTIPOINT;
-        }
-        case POINT_TO_POINT: {
-            return TopologyType.POINT_TO_POINT;
-        }
-        case SINGLEPOINT: {
-            return TopologyType.SINGLEPOINT;
-        }
-        default: {
-            // throw new
-            return TopologyType.POINT_TO_POINT;
-        }
+            case FULL_MESH: {
+                return TopologyType.FULL_MESH;
+            }
+            case POINT_TO_MULTIPOINT: {
+                return TopologyType.POINT_TO_MULTIPOINT;
+            }
+            case POINT_TO_POINT: {
+                return TopologyType.POINT_TO_POINT;
+            }
+            case SINGLEPOINT: {
+                return TopologyType.SINGLEPOINT;
+            }
+            default: {
+                // throw new
+                return TopologyType.POINT_TO_POINT;
+            }
         }
     }
 
     /**
      * Translate topology type.<br>
-     * 
+     *
      * @param topo The string object of topology type
      * @return translation result
      * @since SDNO 0.5
@@ -134,28 +134,28 @@ public class TranslatorUtil {
         final TopologyType topologyType = EnumUtil.valueOf(TopologyType.class, topo);
 
         switch(topologyType) {
-        case FULL_MESH: {
-            return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.FULL_MESH;
-        }
-        case POINT_TO_MULTIPOINT: {
-            return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_MULTIPOINT;
-        }
-        case POINT_TO_POINT: {
-            return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_POINT;
-        }
-        case SINGLEPOINT: {
-            return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.SINGLEPOINT;
-        }
-        default: {
-            // throw new
-            return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_POINT;
-        }
+            case FULL_MESH: {
+                return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.FULL_MESH;
+            }
+            case POINT_TO_MULTIPOINT: {
+                return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_MULTIPOINT;
+            }
+            case POINT_TO_POINT: {
+                return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_POINT;
+            }
+            case SINGLEPOINT: {
+                return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.SINGLEPOINT;
+            }
+            default: {
+                // throw new
+                return org.openo.sdno.model.servicemodel.common.enumeration.TopologyType.POINT_TO_POINT;
+            }
         }
     }
 
     /**
      * Translate L3VPN operation status to service model.<br>
-     * 
+     *
      * @param nOperStatus The operation status
      * @return translation result
      * @since SDNO 0.5
@@ -166,14 +166,14 @@ public class TranslatorUtil {
         }
 
         switch(nOperStatus) {
-        case OPERATE_UP:
-            return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.UP.getAlias();
+            case OPERATE_UP:
+                return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.UP.getAlias();
 
-        case OPERATE_DOWN:
-            return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.DOWN.getAlias();
+            case OPERATE_DOWN:
+                return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.DOWN.getAlias();
 
-        default:
-            return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.PARTIAL.getAlias();
+            default:
+                return org.openo.sdno.model.servicemodel.common.enumeration.OperStatus.PARTIAL.getAlias();
         }
     }
 
@@ -194,7 +194,7 @@ public class TranslatorUtil {
 
     /**
      * Translate L3VPN admin status to service model.<br>
-     * 
+     *
      * @param nAdminStatus The admin status
      * @return translation result
      * @since SDNO 0.5
@@ -205,14 +205,14 @@ public class TranslatorUtil {
         }
 
         switch(nAdminStatus) {
-        case ADMIN_UP:
-            return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.ACTIVE.getAlias();
+            case ADMIN_UP:
+                return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.ACTIVE.getAlias();
 
-        case ADMIN_DOWN:
-            return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.INACTIVE.getAlias();
+            case ADMIN_DOWN:
+                return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.INACTIVE.getAlias();
 
-        default:
-            return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.PARTIAL.getAlias();
+            default:
+                return org.openo.sdno.model.servicemodel.common.enumeration.AdminStatus.PARTIAL.getAlias();
         }
     }
 }
