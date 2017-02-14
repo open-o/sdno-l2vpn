@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright 2016 Huawei Technologies Co., Ltd.
+    Copyright 2016-2017 Huawei Technologies Co., Ltd.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@
         <!-- registering beans -->
         <jaxrs:serviceBeans>
             <ref bean="l2VpnServiceResource"></ref>
+            <ref bean="healthCheckRoaResource"></ref>
             <ref bean="SwaggerRoa"></ref>
         </jaxrs:serviceBeans>
         <!-- registering providers -->
@@ -49,6 +50,8 @@
 
     <bean id="l2VpnServiceResource" class="org.openo.sdno.l2vpnservice.resource.L2VpnServiceResource">
         <property name="service" ref="l2vpnService" />
+    </bean>
+    <bean id="healthCheckRoaResource" class="org.openo.sdno.l2vpnservice.resource.HealthCheckRoaResource">
     </bean>
     <bean id="SwaggerRoa" class="org.openo.sdno.l2vpnservice.resource.SwaggerRoa">
     </bean>
