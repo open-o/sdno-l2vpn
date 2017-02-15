@@ -14,7 +14,8 @@
 				"wtr": 0
 			},
 			"pwSchema": null,
-			"qosPolicies":{},
+			"qosPolicies": {
+			},
 			"tunnelSchema": {
 				"uuid": "905f0215-2ce5-4391-b62c-702e1fb71a3d",
 				"tunnelTech": "RSVP-TE",
@@ -26,7 +27,10 @@
 					"shareMode": "N:1",
 					"coRoute": "false",
 					"bfdEnable": "true",
-					"pathConstraint": null,
+					"pathConstraint": {
+						"setupPriority": 5,
+						"holdupPriority": 5
+					},
 					"tunnelProtectpolicy": {
 						"uuid": "7d58ddfa-2e77-4eb1-acc6-1493be75e29a",
 						"protectType": "1:1",
@@ -36,7 +40,7 @@
 					}
 				}
 			},
-			"mtu":null,
+			"mtu": null,
 			"vpn": {
 				"id": "0de4547b-50b1-4dcd-80a5-a65bd3c4a834",
 				"name": "l2vpn-te-45-12",
@@ -71,11 +75,12 @@
 									"uuid": "3a9efe5c-d6c4-426d-ac8e-141ebfed934d",
 									"accessType": "dot1q",
 									"vlanAction": null,
-									"actionValue": null,
+									"actionValue": "KEEP",
 									"qinqCvlanList": null,
 									"qinqSvlanList": null,
 									"dot1qVlanList": "43",
-									"addtionalInfo": []
+									"addtionalInfo": [
+									]
 								},
 								"ipTpSpec": null
 							}
@@ -89,7 +94,8 @@
 							"ceName": "SiteA",
 							"ceIfmasterIp": "10.10.10.2",
 							"location": null,
-							"addtionalInfo": []
+							"addtionalInfo": [
+							]
 						},
 						"inboundQosPolicyId": null,
 						"outboundQosPolicyId": null,
@@ -109,9 +115,11 @@
 							"cbs": 4,
 							"pbs": 4
 						},
-						"routeProtocolSpecs": [],
+						"routeProtocolSpecs": [
+						],
 						"containedMainTP": "3eb1a10d-5d43-468c-80cc-5f067d784b8a",
-						"addtionalInfo": []
+						"addtionalInfo": [
+						]
 					},
 					{
 						"id": "ff9b2bbb-0db1-414b-83db-cde41990e2b9",
@@ -132,11 +140,12 @@
 									"uuid": "de18a6ce-fea3-46ce-b75a-7c02e3853702",
 									"accessType": "dot1q",
 									"vlanAction": null,
-									"actionValue": null,
+									"actionValue": "KEEP",
 									"qinqCvlanList": null,
 									"qinqSvlanList": null,
 									"dot1qVlanList": "54",
-									"addtionalInfo": []
+									"addtionalInfo": [
+									]
 								},
 								"ipTpSpec": null
 							}
@@ -150,7 +159,8 @@
 							"ceName": "site_t_1",
 							"ceIfmasterIp": "11.2.2.11",
 							"location": null,
-							"addtionalInfo": []
+							"addtionalInfo": [
+							]
 						},
 						"inboundQosPolicyId": null,
 						"outboundQosPolicyId": null,
@@ -170,12 +180,14 @@
 							"cbs": 4,
 							"pbs": 4
 						},
-						"routeProtocolSpecs": [],
+						"routeProtocolSpecs": [
+						],
 						"containedMainTP": "3d1af9bd-0014-40d7-8412-ab25c92d9941",
-						"addtionalInfo": []
+						"addtionalInfo": [
+						]
 					}
 				],
-				"addtionalInfo": null
+				"addtionalInfo": []
 			}
 		}
 	},

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Huawei Technologies Co., Ltd.
+ * Copyright 2016-2017 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,12 @@ import org.openo.baseservice.remoteservice.exception.ServiceException;
 import org.openo.sdno.framework.container.util.JsonUtil;
 import org.openo.sdno.l2vpnservice.checker.FailChecker;
 import org.openo.sdno.l2vpnservice.checker.SuccessChecker;
+import org.openo.sdno.l2vpnservice.drivermanager.DriverRegisterManager;
 import org.openo.sdno.l2vpnservice.mocoserver.L2vpnSbiAdapterServer;
 import org.openo.sdno.model.servicemodel.tp.Tp;
 import org.openo.sdno.model.servicemodel.vpn.Vpn;
 import org.openo.sdno.model.servicemodel.vpn.VpnVo;
+import org.openo.sdno.testframework.checker.IChecker;
 import org.openo.sdno.testframework.checker.ServiceExceptionChecker;
 import org.openo.sdno.testframework.http.model.HttpModelUtils;
 import org.openo.sdno.testframework.http.model.HttpRequest;
@@ -69,12 +71,14 @@ public class ITCreateL2vpn extends TestManager {
     @BeforeClass
     public static void setup() throws ServiceException {
         topo.createInvTopology();
+        DriverRegisterManager.registerDriver();
         adapterServer.start();
     }
 
     @AfterClass
     public static void tearDown() throws ServiceException {
         topo.clearInvTopology();
+        DriverRegisterManager.unRegisterDriver();
         adapterServer.stop();
     }
 
@@ -161,7 +165,7 @@ public class ITCreateL2vpn extends TestManager {
 
         queryRequest.setUri(PathReplace.replaceUuid("l2vpnid", queryRequest.getUri(), "NotExistId"));
 
-        execTestCase(queryRequest, new FailChecker());
+        execTestCase(queryRequest, new NullChecker());
     }
 
     @Test
@@ -201,7 +205,7 @@ public class ITCreateL2vpn extends TestManager {
 
         deleteRequest.setUri(PathReplace.replaceUuid("l2vpnid", deleteRequest.getUri(), "NotExistId"));
 
-        execTestCase(deleteRequest, new FailChecker());
+        execTestCase(deleteRequest, new UpdateNotExistChecker());
     }
 
     @Test
@@ -212,5 +216,29 @@ public class ITCreateL2vpn extends TestManager {
         deleteRequest.setUri(PathReplace.replaceUuid("l2vpnid", deleteRequest.getUri(), "%3333&#"));
 
         execTestCase(deleteRequest, new FailChecker());
+    }
+
+    private class NullChecker implements IChecker {
+
+        @Override
+        public boolean check(HttpResponse response) {
+            if(null == response.getData()) {
+                return true;
+            }
+            return false;
+        }
+
+    }
+
+    private class UpdateNotExistChecker implements IChecker {
+
+        @Override
+        public boolean check(HttpResponse response) {
+            if(null != response.getData() && response.getData().contains("NotExistId")) {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

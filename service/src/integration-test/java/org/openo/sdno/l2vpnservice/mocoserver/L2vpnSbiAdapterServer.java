@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Huawei Technologies Co., Ltd.
+ * Copyright 2016-2017 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,7 @@
 
 package org.openo.sdno.l2vpnservice.mocoserver;
 
-import org.openo.sdno.framework.container.util.JsonUtil;
-import org.openo.sdno.model.uniformsbi.base.AdapterResponseInfo;
-import org.openo.sdno.testframework.http.model.HttpResponse;
-import org.openo.sdno.testframework.http.model.HttpRquestResponse;
 import org.openo.sdno.testframework.moco.MocoHttpServer;
-import org.openo.sdno.testframework.moco.responsehandler.MocoResponseHandler;
 
 public class L2vpnSbiAdapterServer extends MocoHttpServer {
 
@@ -37,28 +32,9 @@ public class L2vpnSbiAdapterServer extends MocoHttpServer {
     @Override
     public void addRequestResponsePairs() {
         this.addRequestResponsePair(CREATE_L2VPN_FILE);
-        this.addRequestResponsePair(QUERY_L2VPN_DETAIL_FILE, new QueryL2VpnDetailResponseHandler());
+        this.addRequestResponsePair(QUERY_L2VPN_DETAIL_FILE);
         this.addRequestResponsePair(DELETE_L2VPN_FILE);
         this.addRequestResponsePair(UPDATE_L2VPN_FILE);
-    }
-
-    private class QueryL2VpnDetailResponseHandler extends MocoResponseHandler {
-
-        @Override
-        public void processRequestandResponse(HttpRquestResponse httpObject) {
-
-            HttpResponse httpResponse = httpObject.getResponse();
-            MocoL2vpnAdapterResponseInfo l2VpnResponse =
-                    JsonUtil.fromJson(httpResponse.getData(), MocoL2vpnAdapterResponseInfo.class);
-
-            AdapterResponseInfo responseInfo = new AdapterResponseInfo();
-            responseInfo.setFormat(l2VpnResponse.getFormat());
-            responseInfo.setRespHeaders(l2VpnResponse.getRespHeaders());
-            responseInfo.setRet(l2VpnResponse.getRet());
-            responseInfo.setMsg(JsonUtil.toJson(l2VpnResponse.getMsg()));
-
-            httpResponse.setData(JsonUtil.toJson(responseInfo));
-        }
     }
 
 }
