@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Huawei Technologies Co., Ltd.
+ * Copyright 2016-2017 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,16 +92,16 @@ public class L3TunnelServiceTranslatorImpl implements L3TunnelServiceTranslator 
             switch(tunnelTechType) {
                 // case AUTO_SELECT:
                 case LDP:
-                    signalType = SignalType.LDP.name();
+                    signalType = SignalType.LDP.getAlias();
                     break;
 
                 // Use rsvp-te if tunnelTechType mode is SR_TE
                 case SR_TE:
-                    signalType = SignalType.RSVP_TE.name();
+                    signalType = SignalType.RSVP_TE.getAlias();
                     break;
 
                 case RSVP_TE:
-                    signalType = SignalType.RSVP_TE.name();
+                    signalType = SignalType.RSVP_TE.getAlias();
                     break;
 
                 default:
